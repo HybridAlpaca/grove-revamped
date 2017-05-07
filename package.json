@@ -1,8 +1,21 @@
 {
   "dependencies": {
     "body-parser": "^1.17.1",
+    "ejs-locals": "^1.0.2",
     "express": "^4.15.2",
+    "express-session": "^1.15.2",
+    "md5": "^2.2.1",
     "mongoose": "^4.9.7",
     "socket.io": "^1.7.3"
-  }
+  },
+  "scripts": {
+    "start": "node ."
+  },
+  "name": "Grove",
+  "version": "1.0.0",
+  "description": "The Grove",
+  "main": "server/index.js",
+  "repository": "https://github.com/HybridAlpaca/grove-revamped",
+  "author": "Seth Traman <sethtraman@gmail.com>",
+  "license": "MIT"
 }
