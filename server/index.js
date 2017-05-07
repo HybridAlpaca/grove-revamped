@@ -32,7 +32,7 @@ function ensureSecure(req, res, next) {
 app.all('*', ensureSecure); // at top of routing calls
 
 app.get('/', (req, res) => res.render(path.resolve(__dirname, '../', 'views', req.session.user ? 'dashboard.ejs' : 'index.ejs')));
-app.get('/play', (req, res) => res.render(path.resolve(__dirname, '../', 'views', 'play.ejs')));
+app.get('/play', (req, res) => res.render(path.resolve(__dirname, '../', 'views', req.session.user ? 'play.ejs' : 'login.ejs')));
 app.get('/login', (req, res) => res.render(path.resolve(__dirname, '../', 'views', 'login.ejs')));
 app.get('/register', (req, res) => res.render(path.resolve(__dirname, '../', 'views', 'register.ejs')));
 

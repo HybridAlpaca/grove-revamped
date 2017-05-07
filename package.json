@@ -17,5 +17,11 @@
   "main": "server/index.js",
   "repository": "https://github.com/HybridAlpaca/grove-revamped",
   "author": "Seth Traman <sethtraman@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-latest": "^6.24.1",
+    "webpack": "^2.5.1"
+  }
 }

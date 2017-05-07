@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = (mongoose, app) => {
 
     let db = mongoose.connection;
