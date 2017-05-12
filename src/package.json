@@ -3,5 +3,10 @@
   "version": "1.0.0",
   "description": "src",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "cannon": "^0.6.2",
+    "jquery": "^3.2.1",
+    "three": "^0.85.2"
+  }
 }

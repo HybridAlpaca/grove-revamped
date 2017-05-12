@@ -1,9 +1,7 @@
 'use strict';
 
-const update = require('./init/loop'),
-    init = require('./init/init');
+require('./logger')();
 
-window.addEventListener('load', () => {
-    init();
-    update();
-});
+require('./init/world')();
+require('./init/scene')();
+require('./init/update')();

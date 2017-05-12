@@ -1,10 +1,28 @@
 <!doctye html>
 <html>
-    <head>
-        <title>The Grove</title>
-    </head>
-    <body>
-        <h1>Play</h1>
-        <script src='/js/bundle.min.js'></script>
-    </body>
+
+<head>
+    <title>The Grove</title>
+    <link rel='stylesheet' href='/css/theme.css'>
+</head>
+
+<body>
+    <div id="blocker">
+
+        <div id="instructions">
+            <span style="font-size:40px">The Grove</span>
+            <br /> (W,A,S,D = Move, SPACE = Jump, MOUSE = Look, CLICK = Shoot)
+        </div>
+
+    </div>
+
+    <div id='console' style='display:none'>
+        <div id='console-logarea'></div>
+        <input id='console-input'>
+    </div>
+
+    <script src='/js/vendor.min.js'></script>
+    <script src='/js/main.min.js'></script>
+</body>
+
 </html>

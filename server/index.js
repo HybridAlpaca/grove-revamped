@@ -1,15 +1,12 @@
 'use strict';
 
 const express = require('express'),
-    socketio = require('socket.io'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
     session = require('express-session'),
     path = require('path');
 
-let app = express(),
-    http = require('http').Server(app),
-    io = socketio(http);
+let app = express();
 
 app.engine('ejs', require('ejs-locals'));
 app.use(express.static('public'));
@@ -36,7 +33,7 @@ app.get('/play', (req, res) => res.render(path.resolve(__dirname, '../', 'views'
 app.get('/login', (req, res) => res.render(path.resolve(__dirname, '../', 'views', 'login.ejs')));
 app.get('/register', (req, res) => res.render(path.resolve(__dirname, '../', 'views', 'register.ejs')));
 
-http.listen(process.env.PORT || 8080, (listening) => {
+app.listen(process.env.PORT || 8080, (listening) => {
     if (!process.env.NODE_ENV)
         console.log('Listening For conections on 0.0.0.0');
 });

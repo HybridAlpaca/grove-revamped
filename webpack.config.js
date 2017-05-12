@@ -6,7 +6,7 @@ const webpack = require('webpack'),
 module.exports = {
     entry: './src/index.js',
     output: {
-        filename: 'bundle.min.js',
+        filename: '[name].min.js',
         path: path.resolve(__dirname, 'public', 'js')
     },
     module: {
@@ -21,8 +21,24 @@ module.exports = {
             }
         }]
     },
-
+    resolve: {
+        alias: {
+            globals: path.resolve(__dirname, 'src', 'globals.js')
+        }
+    },
     plugins: [
-        new webpack.optimize.UglifyJsPlugin({})
+        new webpack.optimize.UglifyJsPlugin({}),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            minChunks: (module) => {
+                var userRequest = module.userRequest;
+                if (typeof userRequest !== 'string')
+                    return false;
+                return userRequest.indexOf('bower_components') >= 0 ||
+                    userRequest.indexOf('node_modules') >= 0 ||
+                    userRequest.indexOf('libraries') >= 0;
+            }
+        }),
+        new webpack.optimize.OccurrenceOrderPlugin(true)
     ]
 };
