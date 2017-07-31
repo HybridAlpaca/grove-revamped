@@ -1,9 +1,17 @@
 'use strict';
 
-const CANNON = require('cannon');
+const CANNON = require('cannon'),
+    THREE = require('three');
 
 let G = require('globals'),
     world = G.get('world');
+
+import {
+    Entity,
+    Enemy,
+    Player
+}
+from '../entity';
 
 module.exports = () => {
     // Setup our world
@@ -21,13 +29,13 @@ module.exports = () => {
     if (split)
         world.solver = new CANNON.SplitSolver(solver);
     else
-        world.solver = solver;
+        world.solver = solver; // TODO: solve world peace
 
     world.gravity.set(0, -20, 0);
     world.broadphase = new CANNON.NaiveBroadphase();
 
     // Create a slippery material (friction coefficient = 0.0)
-    var physicsMaterial = new CANNON.Material("slipperyMaterial");
+    var physicsMaterial = new CANNON.Material("slipperyMaterial"); // slippery...
     var physicsContactMaterial = new CANNON.ContactMaterial(physicsMaterial,
         physicsMaterial,
         0.0, // friction coefficient
@@ -36,16 +44,7 @@ module.exports = () => {
     // We must add the contact materials to the world
     world.addContactMaterial(physicsContactMaterial);
 
-    // Create a sphere
-    var mass = 5,
-        radius = 1.3;
-    var sphereShape = new CANNON.Sphere(radius);
-    G.set('sphereBody', new CANNON.Body({
-        mass: mass
-    }));
-    G.get('sphereBody').addShape(sphereShape);
-    G.get('sphereBody').position.set(0, 10, 0);
-    G.get('sphereBody').linearDamping = 0.9;
-    world.add(G.get('sphereBody'));
+
+    G.set('player', new Player());
 
 };

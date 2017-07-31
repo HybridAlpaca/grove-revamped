@@ -1,0 +1,9 @@
+{
+    "gelatin": {
+        "name": "Gelatin",
+        "id": "#000001",
+        "desc": "Like jello, but not edible.",
+        "weight": 1,
+        "value": 3
+    }
+}

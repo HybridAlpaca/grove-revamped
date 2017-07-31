@@ -4,12 +4,15 @@
  */
 
 var THREE = require('three'),
-    CANNON = require('cannon');
+    CANNON = require('cannon'),
+    G = require('globals');
 
 var PointerLockControls = module.exports = function(camera, cannonBody) {
 
+    var footstep = new Audio('/assets/sfx/leaves01.ogg');
+
     var eyeYPos = 2; // eyes are 2 meters above the ground
-    var velocityFactor = 0.2;
+    var velocityFactor = 0.5;
     var jumpVelocity = 20;
     var scope = this;
 
@@ -27,7 +30,7 @@ var PointerLockControls = module.exports = function(camera, cannonBody) {
     var moveLeft = false;
     var moveRight = false;
 
-    var canJump = false;
+    var canJump = false; // white kid
 
     var contactNormal = new CANNON.Vec3(); // Normal in the contact, pointing *out* of whatever the player touched
     var upAxis = new CANNON.Vec3(0, 1, 0);
@@ -151,6 +154,8 @@ var PointerLockControls = module.exports = function(camera, cannonBody) {
 
         inputVelocity.set(0, 0, 0);
 
+        G.get('events').publish('player.move', 'foobar');
+
         if (moveForward) {
             inputVelocity.z = -velocityFactor * delta;
         }
@@ -165,8 +170,9 @@ var PointerLockControls = module.exports = function(camera, cannonBody) {
             inputVelocity.x = velocityFactor * delta;
         }
 
-        // Convert velocity to world coordinates
-        euler.x = pitchObject.rotation.x;
+        // I don't know why, but uncommenting the following line
+        // makes you float...
+        // euler.x = pitchObject.rotation.x;
         euler.y = yawObject.rotation.y;
         euler.order = "XYZ";
         quat.setFromEuler(euler);
@@ -176,6 +182,8 @@ var PointerLockControls = module.exports = function(camera, cannonBody) {
         // Add to the object
         velocity.x += inputVelocity.x;
         velocity.z += inputVelocity.z;
+
+        if ((Math.abs(velocity.x) > 3 || Math.abs(velocity.z) > 3) && canJump) footstep.play();
 
         yawObject.position.copy(cannonBody.position);
     };

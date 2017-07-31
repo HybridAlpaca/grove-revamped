@@ -8,7 +8,8 @@
     "mongoose": "^4.9.7"
   },
   "scripts": {
-    "start": "node ."
+    "start": "node .",
+    "debug": "DEBUG=* node ."
   },
   "name": "Grove",
   "version": "1.0.0",

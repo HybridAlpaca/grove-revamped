@@ -29,6 +29,13 @@ function ensureSecure(req, res, next) {
 app.all('*', ensureSecure); // at top of routing calls
 
 app.get('/', (req, res) => res.render(path.resolve(__dirname, '../', 'views', req.session.user ? 'dashboard.ejs' : 'index.ejs')));
+app.get('/logout', (req, res) => {
+    req.session.user ? delete req.session.user : null;
+    res.redirect('/');
+});
+app.get('/about', (req, res) => res.render(path.resolve(__dirname, '../', 'views', 'about.ejs')));
+app.get('/pwreset', (req, res) => res.render(path.resolve(__dirname, '../', 'views', 'pwreset.ejs')));
+app.get('/settings', (req, res) => res.render(path.resolve(__dirname, '../', 'views', 'settings.ejs')));
 app.get('/play', (req, res) => res.render(path.resolve(__dirname, '../', 'views', req.session.user ? 'play.ejs' : 'login.ejs')));
 app.get('/login', (req, res) => res.render(path.resolve(__dirname, '../', 'views', 'login.ejs')));
 app.get('/register', (req, res) => res.render(path.resolve(__dirname, '../', 'views', 'register.ejs')));

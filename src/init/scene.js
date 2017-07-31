@@ -18,15 +18,28 @@ module.exports = () => {
     light.target.position.set(0, 0, 0);
     light.castShadow = true;
 
+    light.shadow.camera.left = -400;
+    light.shadow.camera.right = 400;
+    light.shadow.camera.top = 100;
+    light.shadow.camera.bottom = -300;
     light.shadow.camera.near = 20;
     light.shadow.camera.far = 50; //camera.far;
-    light.shadow.camera.fov = 40;
+    light.shadow.camera.fov = 70;
 
     light.shadowMapBias = 0.1;
     light.shadowMapDarkness = 0.7;
     light.shadow.mapSize.width = 2 * 512;
     light.shadow.mapSize.height = 2 * 512;
     scene.add(light);
+    let spriteMaterial = new THREE.SpriteMaterial({
+        map: new THREE.ImageUtils.loadTexture('/assets/img/glow.png'),
+        color: 0xffffff,
+        transparent: false,
+        blending: THREE.AdditiveBlending
+    });
+    let sprite = new THREE.Sprite(spriteMaterial);
+    sprite.scale.set(200, 200, 1.0);
+    light.add(sprite);
 
     let uni = {
         time: {
@@ -66,20 +79,24 @@ module.exports = () => {
 
     var PointerLockControls = require('../threex/pointerlock');
 
-    G.set('controls', new PointerLockControls(G.get('camera'), G.get('sphereBody')));
+    G.set('controls', new PointerLockControls(G.get('camera'), G.get('player').body));
     scene.add(G.get('controls').getObject());
     require('../threex/pointerlock.setup')(G.get('controls'));
 
-    let loader = new THREE.ObjectLoader();
-    loader.load('/assets/3d/skjar-isles/skjar-isles.json', (object) => {
+    new THREE.ObjectLoader().load('/assets/3d/skjar-isles/skjar-isles.json', (object) => {
         scene.add(object);
+        object.castShadow = true;
+        object.receiveShadow = true;
         object.traverse((child) => {
+            child.castShadow = true;
+            child.receiveShadow = true;
             if (child instanceof THREE.Mesh && !/NP/gi.test(child.name)) {
-                G.get('load')(child);
+                console.log(`Loading ${child.name}`);
+                G.get('load')(child); // load the kiddos!
             }
         });
     });
-
+    
     renderer.shadowMap.enabled = true;
     renderer.shadowMapSoft = true;
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -95,4 +112,5 @@ function onWindowResize() {
     G.get('camera').aspect = window.innerWidth / window.innerHeight;
     G.get('camera').updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
+    console.log(`Window resized to ${window.innerWidth}, ${window.innerHeight}`);
 }

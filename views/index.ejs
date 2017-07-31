@@ -1,9 +1,75 @@
-<!doctye html>
+<!doctype html>
+
+
 <html>
-    <head>
-        <title>The Grove</title>
-    </head>
-    <body>
-        <h1>TODO</h1>
-    </body>
+
+<head>
+  <title>The Grove</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  <link rel='stylesheet' href='/css/login.css'>
+  <link rel='icon' href='/img/favicon.ico'>
+  <meta name='description' content='The Grove mmo'>
+  <meta name="google-site-verification" content="M0Fqp80V_5fWOZL4Isr2dDD_x5ctHG0AWENlmXvU0tg" />
+  <meta name="google-site-verification" content="dKrUn7pDvpG3PQeN81Vvz710aFPqnDUBYzn0VCyA6Ko" />
+  <meta name="msvalidate.01" content="F1CE3178A4FCD83F869851C373821E9D" />
+  <meta property="og:title" content="The Grove">
+  <meta name="keywords" content="the grove, grove game, grove mmo, nate goldsborough, seth traman,  cellman123, artifex game studios, hybrid alpaca game studios, the grove mmo, grove MMORPG, nathen418, the grove home" />
+  <meta property="og:description" content="The Grove is an open-source online MMORPG.">
+  <meta property="og:image" content="/img/favicon.ico">
+  <link rel='author' href='https://c9.io/tramans'>
+
+</head>
+
+<body>
+  <%- include book %>
+  <script src='//code.jquery.com/jquery-1.7.2.min.js'></script>
+  <script src='/js/vendor/turn.min.js'></script>
+  <script type="text/javascript">
+    $("#flipbook").turn({
+      width: 800,
+      height: 600,
+      autoCenter: true
+    });
+    $("#flipbook").bind("turned", function(event, page, view) {
+      if (page == 1) {
+        history.pushState(null, 'home', '/');
+        document.title = 'The Grove';
+      }
+      if (page == 2 || page == 3) {
+        history.pushState(null, 'about', '/about');
+        document.title = 'The Grove | About';
+      }
+      if (page == 4 || page == 5) {
+        history.pushState(null, 'login', '/login');
+        document.title = 'The Grove | Login';
+      }
+      if (page == 6) {
+        history.pushState(null, 'register', '/register');
+        document.title = 'The Grove | Register';
+      }
+    });
+  </script>
+
 </html>
+
+
+<!--Start of Google Analytics-->
+
+<script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-91570609-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!--End of Google Analytics-->

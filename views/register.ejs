@@ -1,14 +1,72 @@
 <!doctype html>
 <html>
-    <head>
-        <title>Login | The Grove</title>
-    </head>
-    <body>
-        <form action='/register' method='post'>
-            <input name='username'>
-            <input name='password' type='password'>
-            <input name='confPassword' type='password'>
-            <input type='submit'>
-        </form>
-    </body>
-</html>
+
+<head>
+    <title>The Grove | Register</title>
+    <link rel='icon' href='/img/favicon.ico'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Aldrich" rel="stylesheet">
+    <link rel='stylesheet' href='/css/login.css'>
+</head>
+
+<body>
+    <%- include book %>
+        <script src='//code.jquery.com/jquery-1.7.2.min.js'></script>
+        <script src='/js/vendor/turn.min.js'></script>
+        <script type="text/javascript">
+            $("#flipbook").turn({
+                width: 800,
+                height: 600,
+                autoCenter: true
+            });
+            $("#flipbook").bind("turned", function(event, page, view) {
+                if (page == 1) {
+                    history.pushState(null, 'home', '/');
+                    document.title = 'The Grove';
+                }
+                if (page == 2 || page == 3) {
+                    history.pushState(null, 'about', '/about');
+                    document.title = 'The Grove | About';
+                }
+                if (page == 4 || page == 5) {
+                    history.pushState(null, 'login', '/login');
+                    document.title = 'The Grove | Login';
+                }
+                if (page == 6) {
+                    history.pushState(null, 'register', '/register');
+                    document.title = 'The Grove | Register';
+                }
+            });
+            $(document).ready(function() {
+                $("#flipbook").turn('next');
+                setTimeout(function() {
+                    $("#flipbook").turn('next');
+                    setTimeout(function() {
+                        $("#flipbook").turn('next');
+                    }, 500);
+                }, 500);
+            });
+        </script>
+
+</body>
+
+<!--Start of Google Analytics-->
+
+<script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-91570609-1', 'auto');
+    ga('send', 'pageview');
+</script>
+
+<!--End of Google Analytics-->
