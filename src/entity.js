@@ -86,19 +86,20 @@ export class Living extends Entity {
         this.cnt = Number; // constitution
         this.chr = Number; // charisma
 
-        this.inv = new Set(); // please be a wise choice...  This is inventory btw
+        this.inv = []; // inventory
+        this.effects = []; // buffs, ex. bleeding, on fire, fast healing, etc.
 
     }
 
     attack(entity) {
-        if (true) {
-            entity.damage(this.dmg);
-            this.lastAttacked = Date.now();
-            this.callEvent('attack');
-        }
+        if (!G.get('controls').enabled) return;
+        entity.damage(this.dmg);
+        this.lastAttacked = Date.now();
+        this.callEvent('attack');
     }
 
     damage(dmg) {
+        if (!G.get('controls').enabled) return;
         this.hp -= dmg;
         if (this.hp <= 0) this.kill();
         this.lastDamaged = Date.now();
@@ -106,6 +107,7 @@ export class Living extends Entity {
     }
 
     heal(hp) {
+        if (!G.get('controls').enabled) return;
         // only heal if at least 3 seconds have gone by without being hurt
         if (Date.now() - this.lastDamaged > 3000) this.hp += hp;
         if (this.hp >= this.hpMax) this.hp = this.hpMax;
@@ -113,6 +115,7 @@ export class Living extends Entity {
     }
 
     kill() {
+        if (!G.get('controls').enabled) return;
         this.remove();
         this.callEvent('kill');
     }
@@ -152,7 +155,7 @@ export class AI extends Living {
 
         // find target
         for (const entity of G.get('entities')) {
-            if (entity.id == this.id) continue;
+            if (entity != G.get('player')) continue; // prevent cannibalism
             else if (mypos.distanceTo(entity.mesh.position) > 50) continue;
             else if (this.target && mypos.distanceTo(entity.mesh.position) < mypos.distanceTo(this.target.mesh.position)) {
                 this.target = entity;
@@ -163,7 +166,7 @@ export class AI extends Living {
 
         if (this.target && mypos.distanceTo(this.target.mesh.position) > 50) this.target = null;
 
-        const VELOCITYCAP = this.opts.speed || 7;
+        const VELOCITYCAP = this.spd || 7;
 
         if (this.target) {
             let targetpos = this.target.mesh.position;
@@ -299,10 +302,22 @@ export class Enemy extends AI {
             body.position.set(opts.pos.x || 10, opts.pos.y || 20, opts.pos.z || 10);
             body.linearDamping = 0.9;
 
+            object.traverse((child) => {
+                for (let mesh of data.mesh) {
+                    if (mesh.name.toLowerCase() == child.name.toLowerCase()) {
+                        for (let key in mesh) {
+                            child.material[key] = mesh[key];
+                            if (key == 'color') child.material[key] = new THREE.Color(mesh[key]);
+                        }
+                    }
+                }
+            });
+
             this.mesh = object;
             G.get('scene').add(this.mesh);
             this.body = body;
             G.get('world').add(this.body);
+
         });
 
         this.addEventListener('kill', () => {
@@ -315,7 +330,9 @@ export class Enemy extends AI {
                 let amount = Math.round(Math.random() * item.max) + item.min;
                 if (amount > item.max) amount = item.max;
                 if (!amount) continue;
-                Materialize.toast(`${item.id} (${amount}) added`, 1000);
+                for (let i = 0; i < amount; i++) G.get('player').inv.push(items[item.id]);
+                if (amount > 1) Materialize.toast(`${item.id} (${amount}) added`, 1000);
+                else Materialize.toast(`${item.id} added`, 1000);
 
             }
         });

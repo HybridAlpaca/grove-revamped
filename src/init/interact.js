@@ -11,24 +11,24 @@ function attack(event) {
         let raycaster = new THREE.Raycaster();
         raycaster.set(G.get('camera').getWorldPosition(), G.get('camera').getWorldDirection());
 
-        if (sword && Date.now() - G.get('player').lastAttacked > 1000) {
+        if (sword && Date.now() - G.get('player').lastAttacked > 800) {
             let tween = new TWEEN.Tween(sword.rotation)
                 .to({
                     x: [-Math.PI / 2, 0]
-                }, 1000)
+                }, 800)
                 .start();
-                
+
             G.get('tweens').push(tween);
-            
+
             G.get('player').lastAttacked = Date.now();
-        }
 
-        for (const entity of G.get('entities')) {
+            for (const entity of G.get('entities')) {
 
-            let intersects = raycaster.intersectObjects(entity.mesh.children, true);
-            if ((intersects.length && G.get('player').mesh.position.distanceTo(entity.mesh.position) < 5)) {
-                entity.callEvent('click');
-                G.get('player').attack(entity);
+                let intersects = raycaster.intersectObjects(entity.mesh.children, true);
+                if ((intersects.length && G.get('player').mesh.position.distanceTo(entity.mesh.position) < 5)) {
+                    entity.callEvent('click');
+                    G.get('player').attack(entity);
+                }
             }
         }
 

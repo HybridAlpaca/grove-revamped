@@ -1,6 +1,7 @@
 'use strict';
 
-const THREE = require('three'),
+const $ = require('jquery'),
+    THREE = require('three'),
     CANNON = require('cannon');
 
 let G = require('globals'),
@@ -8,6 +9,26 @@ let G = require('globals'),
     scene = G.get('scene');
 
 module.exports = () => {
+
+    // loading screen
+
+    let loader = require('../json/loader');
+
+    THREE.DefaultLoadingManager.onProgress = (item, loaded, total) => {
+        console.log(`Loading ${item} (${loaded}/${total})`);
+    };
+
+    THREE.DefaultLoadingManager.onLoad = () => {
+        console.log('Loading complete');
+        $('#instructions').html(`<h4>${loader[Math.floor(Math.random() * loader.length)]}</h4>`);
+    };
+
+    THREE.DefaultLoadingManager.onError = (item) => {
+        console.error(`Error loading ${item}`);
+    };
+
+
+
     scene.fog = new THREE.Fog(0xFFFFFF, 0, 500);
 
     var ambient = new THREE.AmbientLight(0x111111);
@@ -96,7 +117,7 @@ module.exports = () => {
             }
         });
     });
-    
+
     renderer.shadowMap.enabled = true;
     renderer.shadowMapSoft = true;
     renderer.setSize(window.innerWidth, window.innerHeight);

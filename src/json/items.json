@@ -3,6 +3,7 @@
         "name": "Gelatin",
         "id": "#000001",
         "desc": "Like jello, but not edible.",
+        "path": "/assets/icons/gelatin.png",
         "weight": 1,
         "value": 3
     }

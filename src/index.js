@@ -10,8 +10,8 @@
  * 
  * - add questline
  * 
- * - GUI (0/3)
- *  X inventory
+ * - GUI (1/3)
+ *  ✓ inventory (07/31/17)
  *  X map
  *  X crafting
  * 
@@ -23,11 +23,9 @@
 
 window.onerror = alert; // use only in dev
 
-import gui from './mechanics/gui';
-
-new gui('The Grove', 'Hello! Thanks for playing our little game :) The Grove is an action RPG inspired by such games as Skyrim, and aims to be playable all in your browser.  We know the 3D graphics are bad (chillax, we\'re a band of unruly 14 year olds), but we must say the 2D ones are pretty sweet - props to Hunter "Goont" Sokolis for those.  Anyway, helpful crticism and new ideas are always welcome, so pop right in and have the best 3 minutes of your life! ;)<br><br>Thanks for playing, HA Game Studios');
-
 require('./init/world')();
 require('./init/scene')();
 require('./init/update')();
 require('./init/interact');
+
+require('./mechanics/gui');

@@ -21,11 +21,11 @@ module.exports = function(controls) {
 
                 controls.enabled = false;
 
-                blocker.style.display = '-webkit-box';
-                blocker.style.display = '-moz-box';
-                blocker.style.display = 'box';
+                // blocker.style.display = '-webkit-box';
+                // blocker.style.display = '-moz-box';
+                // blocker.style.display = 'box';
 
-                instructions.style.display = '';
+                // instructions.style.display = '';
 
             }
 
@@ -44,7 +44,7 @@ module.exports = function(controls) {
         document.addEventListener('mozpointerlockerror', pointerlockerror, false);
         document.addEventListener('webkitpointerlockerror', pointerlockerror, false);
 
-        instructions.addEventListener('click', function(event) {
+        window.addEventListener('click', function(event) {
             instructions.style.display = 'none';
 
             // Ask the browser to lock the pointer

@@ -1,6 +1,8 @@
 'use strict';
 
 let G = require('globals'),
+    $ = require('jquery'),
+    THREE = require('three'),
     CANNON = require('cannon');
 
 import {
@@ -25,14 +27,17 @@ module.exports = function animate(delta) {
     for (const entity of G.get('entities')) {
         entity.update(delta);
     }
-    
-    for(const tween of G.get('tweens')) {
+
+    for (const tween of G.get('tweens')) {
         tween.update(delta);
     }
 
-    if (G.get('entities').length < 15) {
+    if (G.get('entities').length < 25) {
         // add in some enemies
-        let enemy = new Enemy('slime', {
+        let type = 'slime';
+        if (Math.random() < 0.25) type = 'slime.red'
+        else if (Math.random() < 0.075) type = 'slime.blue'
+        let enemy = new Enemy(type, {
             pos: {
                 x: Math.random() * 500 - 250,
                 y: 20,
@@ -47,5 +52,17 @@ module.exports = function animate(delta) {
     G.get('renderer').render(G.get('scene'), G.get('camera'));
     G.set('time', Date.now());
     G.set('tick', G.get('tick') + 1);
+
+    let raycaster = new THREE.Raycaster();
+    raycaster.set(G.get('camera').getWorldPosition(), G.get('camera').getWorldDirection());
+    for (const entity of G.get('entities')) {
+
+        let intersects = raycaster.intersectObjects(entity.mesh.children, true);
+        if (intersects.length)
+            $('#crosshair').attr('src', '/assets/img/crosshair/crosshair-enemy.png');
+        else if (G.get('tick') % 30 == 0)
+            $('#crosshair').attr('src', '/assets/img/crosshair/crosshair.png');
+
+    }
 
 };
