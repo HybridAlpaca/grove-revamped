@@ -1,4 +1,4 @@
 # The Grove
 ### V2.0
 
-Don't you just hate cool projects with no readmes? :D
+Check out the finished game [here](https://grove-mmo.herokuapp.com)!
