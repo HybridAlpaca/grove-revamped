@@ -31,7 +31,7 @@ module.exports = () => {
     else
         world.solver = solver; // TODO: solve world peace
 
-    world.gravity.set(0, 0, 0);
+    world.gravity.set(0, -20, 0);
     world.broadphase = new CANNON.NaiveBroadphase();
 
     // Create a slippery material (friction coefficient = 0.0)
