@@ -35,14 +35,14 @@ module.exports = function animate(delta) {
     if (G.get('entities').length < 40) {
         // add in some enemies
         let type = 'slime';
-        if (Math.random() < 0.5) type = 'slime.red';
+        if (Math.random() < 0.45) type = 'slime.red';
         else if (Math.random() < 0.025) type = 'slime.blue';
         let enemy = new Enemy(type, {
             pos: {
                 x: Math.random() * 500 - 250,
                 y: 20,
                 z: Math.random() * 500 - 250,
-                override: false // don't override territorial values (i.e. red slimes are n the mountains)
+                override: false // don't override territorial values (i.e. red slimes are in the mountains)
             }
         });
     }

@@ -244,7 +244,15 @@ export class Player extends Living {
             mass
         });
         sphereBody.addShape(sphereShape);
-        sphereBody.position.set(0, 40, 0);
+        let raycaster = new THREE.Raycaster(new THREE.Vector3(0, 40, 0), new THREE.Vector3(0, -1, 0));
+        let intersects = raycaster.intersectObjects(G.get('scene').children, true);
+        if (intersects.length > 0) {
+            let pos = intersects[0].point;
+            sphereBody.position.set(pos.x, pos.y, pos.z);
+        }
+        else
+            sphereBody.position.set(0, 20, 0);
+
         sphereBody.linearDamping = 0.9;
         super('Player', new THREE.Object3D(), sphereBody);
 
@@ -283,11 +291,20 @@ export class Enemy extends AI {
                 mass: 5
             });
             body.addShape(new CANNON.Sphere(1));
-            body.position.set(opts.pos.x || 10, opts.pos.y || 20, opts.pos.z || 10);
+            let position;
+            position = new CANNON.Vec3(opts.pos.x || 10, opts.pos.y || 20, opts.pos.z || 10);
             if (data.meta && data.meta.spawn) {
                 let pos = data.meta.spawn;
-                body.position.set(Math.interval(pos[0], pos[1]), Math.interval(pos[2], pos[3]), Math.interval(pos[4], pos[5]));
+                position = new CANNON.Vec3(Math.interval(pos[0], pos[1]), Math.interval(pos[2], pos[3]), Math.interval(pos[4], pos[5]));
             }
+            let raycaster = new THREE.Raycaster(new THREE.Vector3(position.x, position.y, position.z), new THREE.Vector3(0, -1, 0));
+            let intersects = raycaster.intersectObjects(G.get('scene').children, true);
+            if (intersects.length > 0) {
+                let pos = intersects[0].point;
+                body.position.set(pos.x, pos.y + 3, pos.z);
+            }
+            else
+                body.position.set(position.x, position.y, position.z);
             body.linearDamping = 0.9;
 
             object.traverse((child) => {
