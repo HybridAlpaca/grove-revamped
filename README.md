@@ -29,8 +29,8 @@ Or, if you're feeling extra zesty today, try out the [developmental version](htt
 The Team
 -
 
-Seth Traman <img src="/public/assets/img/team/seth.gif" width=30>
-Casimir Kash
-Nate Goldsborough
-Hunter Sokolis
-Michael Rimmile
+- Seth Traman <img src="/public/assets/img/team/seth.gif" width=30>
+- Casimir Kash
+- Nate Goldsborough
+- Hunter Sokolis
+- Michael Rimmile
