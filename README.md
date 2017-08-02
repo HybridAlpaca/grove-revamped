@@ -29,4 +29,4 @@ Or, if you're feeling extra zesty today, try out the [developmental version](htt
 The Team
 -
 
-Seth Traman ![hi](/public/assets/img/team/seth.gif =20x20)
+Seth Traman <img src="/public/assets/img/team/seth.gif" width=20>
