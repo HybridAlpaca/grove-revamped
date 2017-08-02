@@ -47,6 +47,12 @@ body {
     color: white;
 }
 
+#quests {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
 #gui {
     background: url(/assets/img/gui.png);
     margin-left: 15%;

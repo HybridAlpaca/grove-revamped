@@ -8,9 +8,9 @@
 </head>
 
 <body>
-    <div id="blocker">
+    <div id="blocker" class='pntrlk'>
 
-        <div id="instructions">
+        <div id="instructions" class='pntrlk'>
             <img src='/assets/img/loader.gif'>
         </div>
 
@@ -23,10 +23,12 @@
         <hr id='gui-hr'>
         <div id='gui-content'>[ loading ]</div>
         <div id='gui-buttons'>
-            <button class='btn' onclick='$("#gui").fadeOut(400)'>Sounds Good</button>
-            <button class='btn' onclick='$("#gui").fadeOut(400)'>Close</button>
+            <button class='btn pntrlk' onclick='$("#gui").fadeOut(400)'>Sounds Good</button>
+            <button class='btn pntrlk' onclick='$("#gui").fadeOut(400)'>Close</button>
         </div>
     </div>
+    
+    <img id='quests' src='/assets/icons/stabbed-note.png' width=50>
 
     <div id='hud'>
         <p id='hp'>[ loading ]</p>

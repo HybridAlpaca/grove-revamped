@@ -1,3 +1,7 @@
+'use strict';
+
+let $ = require('jquery');
+
 module.exports = function(controls) {
     var blocker = document.getElementById('blocker');
     var instructions = document.getElementById('instructions');
@@ -20,7 +24,7 @@ module.exports = function(controls) {
             else {
 
                 controls.enabled = false;
-
+                
                 // blocker.style.display = '-webkit-box';
                 // blocker.style.display = '-moz-box';
                 // blocker.style.display = 'box';
@@ -44,7 +48,7 @@ module.exports = function(controls) {
         document.addEventListener('mozpointerlockerror', pointerlockerror, false);
         document.addEventListener('webkitpointerlockerror', pointerlockerror, false);
 
-        window.addEventListener('click', function(event) {
+        $('.pntrlk').click(function(event) {
             instructions.style.display = 'none';
 
             // Ask the browser to lock the pointer
@@ -78,7 +82,7 @@ module.exports = function(controls) {
 
             }
 
-        }, false);
+        });
 
     }
     else {

@@ -23,6 +23,12 @@
 
 window.onerror = alert; // use only in dev
 
+window.Grove = {};
+
+window.Grove.globals = require('globals');
+
+Math.interval = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+
 require('./init/world')();
 require('./init/scene')();
 require('./init/update')();

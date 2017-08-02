@@ -20,7 +20,7 @@ module.exports = () => {
 
     THREE.DefaultLoadingManager.onLoad = () => {
         console.log('Loading complete');
-        $('#instructions').html(`<h4>${loader[Math.floor(Math.random() * loader.length)]}</h4>`);
+        if(!$('#instructions').has('h4').length) $('#instructions').html(`<h4>${loader[Math.floor(Math.random() * loader.length)]}</h4>`);
     };
 
     THREE.DefaultLoadingManager.onError = (item) => {

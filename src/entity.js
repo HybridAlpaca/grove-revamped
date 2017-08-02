@@ -211,12 +211,15 @@ export class AI extends Living {
                 if (mypos.z < targetpos.z) this.body.velocity.z++;
                 else if (mypos.z > targetpos.z) this.body.velocity.z--;
             }
-            else if (G.get('tick') % 30 == 0 && this.opts.hostility < 0) {
+            else if (G.get('tick') % 50 == 0 && this.opts.hostility < 0) {
                 this.attack(this.target);
             }
         }
         else {
             // this should never happen
+
+            this.body.velocity.x = 0;
+            this.body.velocity.z = 0;
 
             // nevermind, it does if ai
             // gets far enough away from
@@ -227,25 +230,6 @@ export class AI extends Living {
         else if (this.body.velocity.x < -VELOCITYCAP) this.body.velocity.x = -VELOCITYCAP;
         if (this.body.velocity.z > VELOCITYCAP) this.body.velocity.z = VELOCITYCAP;
         else if (this.body.velocity.z < -VELOCITYCAP) this.body.velocity.z = -VELOCITYCAP;
-    }
-}
-
-export class Item {
-    constructor(id) {
-
-        this.id = id;
-        this.uuid = Math.random();
-
-        // stats
-
-        this.desc = String;
-        this.weight = Number;
-        this.value = Number;
-        this.path = {
-            img: String,
-            model: String
-        };
-
     }
 }
 
@@ -300,6 +284,10 @@ export class Enemy extends AI {
             });
             body.addShape(new CANNON.Sphere(1));
             body.position.set(opts.pos.x || 10, opts.pos.y || 20, opts.pos.z || 10);
+            if (data.meta && data.meta.spawn) {
+                let pos = data.meta.spawn;
+                body.position.set(Math.interval(pos[0], pos[1]), Math.interval(pos[2], pos[3]), Math.interval(pos[4], pos[5]));
+            }
             body.linearDamping = 0.9;
 
             object.traverse((child) => {

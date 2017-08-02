@@ -5,6 +5,20 @@
         "desc": "Like jello, but not edible.",
         "path": "/assets/icons/gelatin.png",
         "weight": 1,
-        "value": 3
+        "value": 3,
+        "effects": {
+            "hp": -1
+        }
+    },
+    "gelball": {
+        "name": "Ball of Gel",
+        "id": "#000002",
+        "desc": "Compressed gelatin, has distinctive healing properties.",
+        "path": "/assets/icons/slow-blob.png",
+        "weight": 3,
+        "value": 3,
+        "effects": {
+            "hp": 5
+        }
     }
 }

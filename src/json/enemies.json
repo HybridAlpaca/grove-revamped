@@ -2,13 +2,14 @@
     "slime": {
         "name": "Slime",
         "path": "slime/slime",
-        "id": "#000001",
+        "id": "slime",
         "stats": {
             "hp": 3,
             "hpMax": 3,
             "dmg": 1,
             "spd": 5
         },
+        "hostility": [[], ["slime", "slime.red", "slime.blue"], []],
         "inv": [{
             "id": "gelatin",
             "min": 1,
@@ -23,18 +24,22 @@
     "slime.red": {
         "name": "Red Slime",
         "path": "slime/slime",
-        "id": "#000002",
+        "id": "slime.red",
         "stats": {
             "hp": 5,
             "hpMax": 5,
             "dmg": 2,
             "spd": 5
         },
+        "hostility": [[], ["slime", "slime.red", "slime.blue"], []],
         "inv": [{
             "id": "gelatin",
             "min": 1,
             "max": 2
         }],
+        "meta": {
+            "spawn": [-500, 200, 250, 300, 310, 390]
+        },
         "mesh": [{
             "name": "outer",
             "transparent": true,
@@ -48,17 +53,18 @@
     "slime.blue": {
         "name": "Blue Slime",
         "path": "slime/slime",
-        "id": "#000003",
+        "id": "slime.blue",
         "stats": {
             "hp": 1,
             "hpMax": 1,
             "dmg": 7,
             "spd": 15
         },
+        "hostility": [[], ["slime", "slime.red", "slime.blue"], []],
         "inv": [{
-            "id": "gelatin",
+            "id": "gelball",
             "min": 1,
-            "max": 4
+            "max": 2
         }],
         "mesh": [{
             "name": "outer",
