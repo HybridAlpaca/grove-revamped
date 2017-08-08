@@ -21,13 +21,22 @@
  * 05/24/17 - Billy the Blue Cube is a f*cking murderer
  * */
 
+
+let NPC = require('./entity').NPC;
+
 window.onerror = alert; // use only in dev
 
-window.Grove = {};
-
-window.Grove.globals = require('globals');
+window.Grove = {
+    version: '1.2.2',
+    globals: require('globals')
+};
 
 Math.interval = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+
+let Wicket = new NPC('wicket', {
+    pos: {},
+    sounds: ['wicket.mp3', 'silence.wav', 'silence.wav', 'silence.wav']
+});
 
 require('./init/world')();
 require('./init/scene')();

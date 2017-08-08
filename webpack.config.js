@@ -1,7 +1,8 @@
 'use strict';
 
 const webpack = require('webpack'),
-    path = require('path');
+    path = require('path'),
+    progress = require('progress-bar-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -39,6 +40,9 @@ module.exports = {
                     userRequest.indexOf('libraries') >= 0;
             }
         }),
-        new webpack.optimize.OccurrenceOrderPlugin(true)
+        new webpack.optimize.OccurrenceOrderPlugin(true),
+        new progress({
+            format: '[:bar] (:percent)'
+        })
     ]
 };

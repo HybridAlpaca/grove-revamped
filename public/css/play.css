@@ -11,6 +11,13 @@ body {
     font-family: arial;
 }
 
+#toast-container {
+    bottom: auto !important;
+    right: auto !important;
+    top: 7%;
+    left: 5%;
+}
+
 #blocker {
     position: absolute;
     width: 100%;
@@ -25,9 +32,9 @@ body {
     display: -webkit-box;
     display: -moz-box;
     display: box;
-    -webkit-box-orient: horizontal;
-    -moz-box-orient: horizontal;
-    box-orient: horizontal;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    box-orient: vertical;
     -webkit-box-pack: center;
     -moz-box-pack: center;
     box-pack: center;

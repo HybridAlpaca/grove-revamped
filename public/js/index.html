@@ -1,4 +1,4 @@
-<!doctype html>
+<!doctye html>
 <html>
 
 <head>
@@ -18,7 +18,7 @@
         </div>
 
     </div>
-
+    
     <img id='crosshair' src='/assets/img/crosshair/crosshair.png' width=30>
 
     <div id='gui'>
@@ -30,7 +30,7 @@
             <button class='btn pntrlk' onclick='$("#gui").fadeOut(400)'>Close</button>
         </div>
     </div>
-
+    
     <img id='quests' src='/assets/icons/stabbed-note.png' width=50>
 
     <div id='hud'>
@@ -39,22 +39,8 @@
 
     <script src="//code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
-
-    <script>
-        window.console.__error = window.console.error;
-        window.console.__warn = window.console.warn;
-        window.console.error = function(out) {
-            if (!/looks like it points into the shape/.test(out))
-                console.__error(out);
-        };
-        window.console.warn = function(out) {
-            if (!/^\.vertices\[/.test(out))
-                console.__warn(out);
-        };
-    </script>
-
-    <script src='/js/vendor.min.js'></script>
-    <script src='/js/main.min.js'></script>
-</body>
+    <!--<script src='/js/vendor.min.js'></script>-->
+    <!--<script src='/js/main.min.js'></script>-->
+<script type="text/javascript" src="vendor.min.js"></script><script type="text/javascript" src="main.min.js"></script></body>
 
 </html>

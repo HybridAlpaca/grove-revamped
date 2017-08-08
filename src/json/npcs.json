@@ -1,0 +1,15 @@
+{
+    "wicket": {
+        "name": "Wicket",
+        "id": "wicket",
+        "path": "wicket/wicket",
+        "stats": {
+            "hp": 3,
+            "hpMax": 3,
+            "spd": 15
+        },
+        "meta": {
+            "spawn": [115, 32, -30]
+        }
+    }
+}

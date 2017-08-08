@@ -5,7 +5,8 @@
     "express": "^4.15.2",
     "express-session": "^1.15.2",
     "md5": "^2.2.1",
-    "mongoose": "^4.9.7"
+    "mongoose": "^4.9.7",
+    "socket.io": "^2.0.3"
   },
   "scripts": {
     "start": "node .",
@@ -20,8 +21,9 @@
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.24.1",
-    "babel-loader": "^7.0.0",
+    "babel-loader": "^7.1.1",
     "babel-preset-latest": "^6.24.1",
-    "webpack": "^2.5.1"
+    "progress-bar-webpack-plugin": "^1.10.0",
+    "webpack": "^3.4.1"
   }
 }

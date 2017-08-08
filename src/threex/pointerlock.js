@@ -13,7 +13,7 @@ var PointerLockControls = module.exports = function(camera, cannonBody) {
 
     var eyeYPos = 2; // eyes are 2 meters above the ground
     var velocityFactor = 0.5;
-    var jumpVelocity = 20;
+    var jumpVelocity = 10;
     var scope = this;
 
     var pitchObject = new THREE.Object3D();
@@ -43,10 +43,35 @@ var PointerLockControls = module.exports = function(camera, cannonBody) {
             contact.ni.negate(contactNormal);
         else
             contactNormal.copy(contact.ni); // bi is something else. Keep the normal as it is
-
+            
+        // Like, a lot of the code needs access to the player.
+        
+        // entity.js makes the player, scene.js adds it to the scene so you can see it,
+        
+        // world.js enables physics for  it, and plenty of other files need realtime data on how much
+        
+        // hp it has, etc.  So, its obvious a lot of files need access to the player.  Instead of constantly
+        
+        // sending messages to other files with new player data (waaaay confusing), we just plop it in G,
+        
+        // which everything has access to - plus, G updates the player for all other files whenever its
+        
+        // changed in one.  Its like this with a lot of other stuff besides the player too, for
+        
+        // example the camera you see out of, the scene everythings placed in, etc.
+        
+        // G (stands for globals) is basically just a convenience we set up so we didnt have to go through
+        
+        // a bunch of extra hastle.
+        
         // If contactNormal.dot(upAxis) is between 0 and 1, we know that the contact normal is somewhat in the up direction.
-        if (contactNormal.dot(upAxis) > 0.5) // Use a "good" threshold value between 0 and 1 here!
+        if (contactNormal.dot(upAxis) > 0.5) { // Use a "good" threshold value between 0 and 1 here!
             canJump = true;
+            if (!G.get('player')) return;
+            let force = G.get('player').body.velocity.y;
+            if (force <= -60)
+                G.get('player').damage(-Math.floor(force));
+        }
     });
 
     var velocity = cannonBody.velocity;
@@ -56,7 +81,7 @@ var PointerLockControls = module.exports = function(camera, cannonBody) {
     var onMouseMove = function(event) {
 
         if (scope.enabled === false) return;
-
+        
         var movementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
         var movementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
 
@@ -64,6 +89,11 @@ var PointerLockControls = module.exports = function(camera, cannonBody) {
         pitchObject.rotation.x -= movementY * 0.002;
 
         pitchObject.rotation.x = Math.max(-PI_2, Math.min(PI_2, pitchObject.rotation.x));
+        
+        G.get('events').publish('player.look', {
+            pitch: pitchObject.rotation,
+            yaw: yawObject.rotation
+        }); // the events library :)
     };
 
     var onKeyDown = function(event) {
@@ -129,6 +159,7 @@ var PointerLockControls = module.exports = function(camera, cannonBody) {
     };
 
     document.addEventListener('mousemove', onMouseMove, false);
+    document.addEventListener('touchmove', onMouseMove, false);
     document.addEventListener('keydown', onKeyDown, false);
     document.addEventListener('keyup', onKeyUp, false);
 
@@ -154,7 +185,7 @@ var PointerLockControls = module.exports = function(camera, cannonBody) {
 
         inputVelocity.set(0, 0, 0);
 
-        G.get('events').publish('player.move', 'foobar');
+        G.get('events').publish('player.move', {});
 
         if (moveForward) {
             inputVelocity.z = -velocityFactor * delta;

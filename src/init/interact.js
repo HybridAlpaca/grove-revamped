@@ -4,7 +4,9 @@ const THREE = require('three'),
     TWEEN = require('tween.js'),
     G = require('globals');
 
-let sword;
+let sword, audio = new Audio('/assets/sfx/sword.mp3');
+
+audio.volume = 0.3;
 
 function attack(event) {
     if (G.get('controls').enabled) {
@@ -16,6 +18,9 @@ function attack(event) {
                 .to({
                     x: [-Math.PI / 2, 0]
                 }, 800)
+                .onStart(() => {
+                    audio.play();
+                })
                 .start();
 
             G.get('tweens').push(tween);
@@ -41,10 +46,8 @@ function interact(event) {
     for (const entity of G.get('entities')) {
 
         let intersects = raycaster.intersectObjects(entity.mesh.children, true);
-        if (intersects.length) {
+        if (intersects.length)
             entity.callEvent('interact');
-            Materialize.toast('You have interacted.', 400);
-        }
 
     }
 }

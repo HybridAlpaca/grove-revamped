@@ -32,22 +32,24 @@ module.exports = function animate(delta) {
         tween.update(delta);
     }
 
-    if (G.get('entities').length < 40) {
+    if (G.get('entities').length < 20) {
         // add in some enemies
         let type = 'slime';
         if (Math.random() < 0.45) type = 'slime.red';
         else if (Math.random() < 0.025) type = 'slime.blue';
         let enemy = new Enemy(type, {
             pos: {
-                x: Math.random() * 500 - 250,
+                x: Math.interval(G.get('player').mesh.position.x - 200, G.get('player').mesh.position.x + 200),
                 y: 20,
-                z: Math.random() * 500 - 250,
+                z: Math.interval(G.get('player').mesh.position.z - 200, G.get('player').mesh.position.z + 200),
                 override: false // don't override territorial values (i.e. red slimes are in the mountains)
-            }
+            },
+            sounds: ['wicket.mp3', 'slime-attack.wav', 'slime-hurt.wav', 'slime-die.wav']
         });
     }
 
-    if (G.get('player').body.position.y < -200) G.get('player').body.position.set(0, 15, 0);
+
+    if (G.get('player').body.position.y < -100) G.get('player').body.position.set(0, 15, 0);
 
     G.get('controls').update(Date.now() - G.get('time'));
     G.get('renderer').render(G.get('scene'), G.get('camera'));
@@ -65,5 +67,9 @@ module.exports = function animate(delta) {
             $('#crosshair').attr('src', '/assets/img/crosshair/crosshair.png');
 
     }
+
+    G.get('events').publish('system.update', {
+        delta
+    });
 
 };
