@@ -16,7 +16,7 @@
  *  X crafting
  * 
  * NOTES:
- * ??/??/16 - Rip Jason, deleted in code
+ * ??/??/16 - RIP Jason, deleted in code
  * 05/23/17 - KJ forgot how to write a function
  * 05/24/17 - Billy the Blue Cube is a f*cking murderer
  * */
@@ -24,18 +24,22 @@
 
 let NPC = require('./entity').NPC;
 
+
 window.onerror = alert; // use only in dev
 
 window.Grove = {
-    version: '1.2.2',
+    version: '1.3.5',
     globals: require('globals')
 };
 
 Math.interval = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+Array.prototype.has = function(data) {
+    return this.indexOf(data) > -1;
+};
 
-let Wicket = new NPC('wicket', {
+let Wicket = window.wicket = new NPC('wicket', {
     pos: {},
-    sounds: ['wicket.mp3', 'silence.wav', 'silence.wav', 'silence.wav']
+    sounds: ['wicket.mp3', null, 'wicket-hurt.mp3', 'wicket-hurt.mp3']
 });
 
 require('./init/world')();

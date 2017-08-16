@@ -6,7 +6,7 @@ let G = require('globals'),
     CANNON = require('cannon');
 
 import {
-    Enemy
+    Creature
 }
 from '../entity';
 
@@ -32,24 +32,26 @@ module.exports = function animate(delta) {
         tween.update(delta);
     }
 
-    if (G.get('entities').length < 20) {
+    if (G.get('entities').length < 30) {
         // add in some enemies
         let type = 'slime';
-        if (Math.random() < 0.45) type = 'slime.red';
-        else if (Math.random() < 0.025) type = 'slime.blue';
-        let enemy = new Enemy(type, {
+        if (Math.random() < 0.25) type = 'slime.red';
+        else if (Math.random() < 0.05) type = 'slime.blue';
+        let enemy = new Creature(type, {
             pos: {
                 x: Math.interval(G.get('player').mesh.position.x - 200, G.get('player').mesh.position.x + 200),
-                y: 20,
+                y: 30,
                 z: Math.interval(G.get('player').mesh.position.z - 200, G.get('player').mesh.position.z + 200),
                 override: false // don't override territorial values (i.e. red slimes are in the mountains)
             },
-            sounds: ['wicket.mp3', 'slime-attack.wav', 'slime-hurt.wav', 'slime-die.wav']
+            sounds: [null, 'slime-attack.wav', 'slime-hurt.wav', 'slime-die.wav']
         });
     }
 
 
     if (G.get('player').body.position.y < -100) G.get('player').body.position.set(0, 15, 0);
+    else if (G.get('player').body.position.y < -20) $('#overlay').css('background', 'blue').css('opacity', 0.5).show();
+    else $('#overlay').hide();
 
     G.get('controls').update(Date.now() - G.get('time'));
     G.get('renderer').render(G.get('scene'), G.get('camera'));
@@ -61,10 +63,14 @@ module.exports = function animate(delta) {
     for (const entity of G.get('entities')) {
 
         let intersects = raycaster.intersectObjects(entity.mesh.children, true);
-        if (intersects.length)
+        if (intersects.length) {
+            $('#label').html(`${entity.data.name /* entity.id */} (${entity.hp}/${entity.hpMax})`);
             $('#crosshair').attr('src', '/assets/img/crosshair/crosshair-enemy.png');
-        else if (G.get('tick') % 30 == 0)
+        }
+        else if (G.get('tick') % 30 == 0) {
+            $('#label').html('');
             $('#crosshair').attr('src', '/assets/img/crosshair/crosshair.png');
+        }
 
     }
 

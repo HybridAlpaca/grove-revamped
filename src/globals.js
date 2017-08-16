@@ -23,6 +23,11 @@ G.set('labels', []);
 G.set('tweens', []);
 G.set('world', new CANNON.World());
 
+G.set('cache', {
+    'audio': {},
+    'json': {}
+});
+
 G.set('events', postal.channel('events'));
 
 G.set('load', (mesh, opts) => {

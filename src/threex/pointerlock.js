@@ -43,27 +43,27 @@ var PointerLockControls = module.exports = function(camera, cannonBody) {
             contact.ni.negate(contactNormal);
         else
             contactNormal.copy(contact.ni); // bi is something else. Keep the normal as it is
-            
+
         // Like, a lot of the code needs access to the player.
-        
+
         // entity.js makes the player, scene.js adds it to the scene so you can see it,
-        
+
         // world.js enables physics for  it, and plenty of other files need realtime data on how much
-        
+
         // hp it has, etc.  So, its obvious a lot of files need access to the player.  Instead of constantly
-        
+
         // sending messages to other files with new player data (waaaay confusing), we just plop it in G,
-        
+
         // which everything has access to - plus, G updates the player for all other files whenever its
-        
+
         // changed in one.  Its like this with a lot of other stuff besides the player too, for
-        
+
         // example the camera you see out of, the scene everythings placed in, etc.
-        
+
         // G (stands for globals) is basically just a convenience we set up so we didnt have to go through
-        
+
         // a bunch of extra hastle.
-        
+
         // If contactNormal.dot(upAxis) is between 0 and 1, we know that the contact normal is somewhat in the up direction.
         if (contactNormal.dot(upAxis) > 0.5) { // Use a "good" threshold value between 0 and 1 here!
             canJump = true;
@@ -81,7 +81,7 @@ var PointerLockControls = module.exports = function(camera, cannonBody) {
     var onMouseMove = function(event) {
 
         if (scope.enabled === false) return;
-        
+
         var movementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
         var movementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
 
@@ -89,7 +89,7 @@ var PointerLockControls = module.exports = function(camera, cannonBody) {
         pitchObject.rotation.x -= movementY * 0.002;
 
         pitchObject.rotation.x = Math.max(-PI_2, Math.min(PI_2, pitchObject.rotation.x));
-        
+
         G.get('events').publish('player.look', {
             pitch: pitchObject.rotation,
             yaw: yawObject.rotation
@@ -103,26 +103,31 @@ var PointerLockControls = module.exports = function(camera, cannonBody) {
             case 38: // up
             case 87: // w
                 moveForward = true;
+                G.get('events').publish('player.move', {});
                 break;
 
             case 37: // left
             case 65: // a
                 moveLeft = true;
+                G.get('events').publish('player.move', {});
                 break;
 
             case 40: // down
             case 83: // s
                 moveBackward = true;
+                G.get('events').publish('player.move', {});
                 break;
 
             case 39: // right
             case 68: // d
                 moveRight = true;
+                G.get('events').publish('player.move', {});
                 break;
 
             case 32: // space
                 if (canJump === true) {
                     velocity.y = jumpVelocity;
+                    G.get('events').publish('player.jump', {});
                 }
                 canJump = false;
                 break;
@@ -185,8 +190,6 @@ var PointerLockControls = module.exports = function(camera, cannonBody) {
 
         inputVelocity.set(0, 0, 0);
 
-        G.get('events').publish('player.move', {});
-
         if (moveForward) {
             inputVelocity.z = -velocityFactor * delta;
         }
@@ -214,7 +217,13 @@ var PointerLockControls = module.exports = function(camera, cannonBody) {
         velocity.x += inputVelocity.x;
         velocity.z += inputVelocity.z;
 
-        if ((Math.abs(velocity.x) > 3 || Math.abs(velocity.z) > 3) && canJump) footstep.play();
+        if ((Math.abs(velocity.x) > 4 || Math.abs(velocity.z) > 4) &&
+            canJump &&
+            (moveForward || moveBackward || moveLeft || moveRight)) footstep.play();
+        else if (!(moveForward || moveBackward || moveLeft || moveRight) && canJump) {
+            velocity.x *= 0.675;
+            velocity.z *= 0.675;
+        }
 
         yawObject.position.copy(cannonBody.position);
     };

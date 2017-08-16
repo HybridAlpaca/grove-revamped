@@ -20,13 +20,17 @@ app.use(session({
 
 require('./mongo')(mongoose, app);
 
-function ensureSecure(req, res, next) {
+/* Conflicts with Heroku servers 
+
+
+   function ensureSecure(req, res, next) {
     if (req.secure) return next();
     if (req.headers["x-forwarded-proto"] === "https") return next();
     res.redirect('https://' + req.hostname + req.url); // express 4.x
 }
 
 app.all('*', ensureSecure); // at top of routing calls
+*/
 
 app.get('/', (req, res) => res.render(path.resolve(__dirname, '../', 'views', req.session.user ? 'dashboard.ejs' : 'index.ejs')));
 app.get('/logout', (req, res) => {

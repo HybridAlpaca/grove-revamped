@@ -1,0 +1,91 @@
+{
+    "slime": {
+        "name": "Slime",
+        "path": "slime/slime",
+        "id": "slime",
+        "stats": {
+            "hp": 3,
+            "hpMax": 3,
+            "dmg": 1,
+            "spd": 5
+        },
+        "hostility": [
+            ["wicket", "player"],
+            ["slime", "slime.red", "slime.blue"],
+            []
+        ],
+        "inv": [{
+            "id": "gelatin",
+            "min": 1,
+            "max": 3
+        }],
+        "mesh": [{
+            "name": "outer",
+            "transparent": true,
+            "opacity": 0.3
+        }]
+    },
+    "slime.red": {
+        "name": "Red Slime",
+        "path": "slime/slime",
+        "id": "slime.red",
+        "stats": {
+            "hp": 5,
+            "hpMax": 5,
+            "dmg": 2,
+            "spd": 5
+        },
+        "hostility": [
+            ["wicket", "player"],
+            ["slime", "slime.red", "slime.blue"],
+            []
+        ],
+        "inv": [{
+            "id": "gelatin",
+            "min": 1,
+            "max": 2
+        }],
+        "meta": {
+            "spawn": [-500, 200, 250, 300, 310, 390]
+        },
+        "mesh": [{
+            "name": "outer",
+            "transparent": true,
+            "opacity": 0.3,
+            "color": 16711680
+        }, {
+            "name": "inner",
+            "color": 16711680
+        }]
+    },
+    "slime.blue": {
+        "name": "Blue Slime",
+        "path": "slime/slime",
+        "id": "slime.blue",
+        "stats": {
+            "hp": 1,
+            "hpMax": 1,
+            "dmg": 7,
+            "spd": 15
+        },
+        "hostility": [
+            ["wicket", "player"],
+            ["slime", "slime.red", "slime.blue"],
+            []
+        ],
+        "inv": [{
+            "id": "gelball",
+            "min": 1,
+            "max": 2
+        }],
+        "mesh": [{
+            "name": "outer",
+            "transparent": true,
+            "opacity": 0.3,
+            "color": 255
+        }, {
+            "name": "inner",
+            "color": 255
+        }]
+    }
+}

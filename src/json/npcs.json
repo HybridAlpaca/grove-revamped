@@ -4,12 +4,15 @@
         "id": "wicket",
         "path": "wicket/wicket",
         "stats": {
-            "hp": 3,
-            "hpMax": 3,
-            "spd": 15
+            "hp": 30,
+            "hpMax": 30,
+            "spd": 20,
+            "dmg": 15
         },
+        "hostility": [["player"], [], []],
         "meta": {
-            "spawn": [115, 32, -30]
+            "spawn": [115, 32, -30],
+            "sounds": ["wicket.mp3", "silence.wav", "wicket-hurt.mp3", "silence.wav"]
         }
     }
 }

@@ -6,7 +6,7 @@ const THREE = require('three'),
 
 let sword, audio = new Audio('/assets/sfx/sword.mp3');
 
-audio.volume = 0.3;
+audio.volume = 0.1;
 
 function attack(event) {
     if (G.get('controls').enabled) {
@@ -14,6 +14,9 @@ function attack(event) {
         raycaster.set(G.get('camera').getWorldPosition(), G.get('camera').getWorldDirection());
 
         if (sword && Date.now() - G.get('player').lastAttacked > 800) {
+            
+            G.get('events').publish('player.attack', {});
+            
             let tween = new TWEEN.Tween(sword.rotation)
                 .to({
                     x: [-Math.PI / 2, 0]
@@ -53,6 +56,7 @@ function interact(event) {
 }
 
 window.addEventListener('mousedown', (event) => {
+    G.get('events').publish('system.click', event);
     event.which == 2 || event.button == 4 ? interact(event) : attack(event); // if middle click, interact
 });
 

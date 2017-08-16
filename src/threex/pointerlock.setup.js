@@ -1,6 +1,7 @@
 'use strict';
 
-let $ = require('jquery');
+let $ = require('jquery'),
+    G = require('globals');
 
 module.exports = function(controls) {
     var blocker = document.getElementById('blocker');
@@ -13,6 +14,8 @@ module.exports = function(controls) {
         var element = document.body;
 
         var pointerlockchange = function(event) {
+            
+            G.get('events').publish('system.pointerlock.enter', {});
 
             if (document.pointerLockElement === element || document.mozPointerLockElement === element || document.webkitPointerLockElement === element) {
 
@@ -24,7 +27,7 @@ module.exports = function(controls) {
             else {
 
                 controls.enabled = false;
-                
+
                 // blocker.style.display = '-webkit-box';
                 // blocker.style.display = '-moz-box';
                 // blocker.style.display = 'box';

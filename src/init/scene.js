@@ -31,7 +31,7 @@ module.exports = () => {
 
 
     scene.fog = new THREE.FogExp2(0xFFFFFF, 0.005);
-    
+
     // Day/night cycle code
 
     let daynight = require('../threex/daynight').DayNight;
@@ -59,7 +59,7 @@ module.exports = () => {
         sunLight.update(sunAngle);
 
     });
-    
+
     // Enable pointerlock controls
 
     var PointerLockControls = require('../threex/pointerlock');
@@ -67,7 +67,7 @@ module.exports = () => {
     G.set('controls', new PointerLockControls(G.get('camera'), G.get('player').body));
     scene.add(G.get('controls').getObject());
     require('../threex/pointerlock.setup')(G.get('controls'));
-    
+
     // Add game map
 
     new THREE.ObjectLoader().load('/assets/3d/skjar-isles/skjar-isles.json', (object) => {
@@ -81,9 +81,12 @@ module.exports = () => {
                 console.log(`Loading ${child.name}`);
                 G.get('load')(child); // load the kiddos!
             }
+            else if (child.name == 'NP_Ocean') {
+                child.material.transparent = true;
+                child.material.opacity = 0.9;
+            }
         });
     });
-
     renderer.shadowMap.enabled = true;
     renderer.shadowMapSoft = true;
     renderer.setSize(window.innerWidth, window.innerHeight);
