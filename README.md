@@ -1,4 +1,5 @@
 # <img src="/public/assets/icons/tree.png" width=40> The Grove
+www.grove-mmo.com
 
 ### V2.0
 
@@ -22,7 +23,7 @@ Backend
 - MongoDB
 
 
-Check out the production version of the game [here](https://grove-revamped.herokuapp.com)!
+Check out the production version of the game [here](https://revamped.grove-mmo.com)!
 
 Or, if you're feeling extra zesty today, try out the [developmental version](https://grove-revamped-tramans.c9users.io) (expect lots of bugs and it may not always be online)
 
