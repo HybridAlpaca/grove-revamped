@@ -1,9 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Bellefair');
+
+::-webkit-input-placeholder {
+    color: #777 !important;
+}
+
 body {
     overflow: hidden;
     background-image: url(/assets/img/tabletop.jpg);
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: Bellefair;
 }
 
 form {
