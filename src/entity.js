@@ -109,6 +109,13 @@ export class Living extends Entity {
         this.stm = Number; // stamina
         this.stmMax = Number;
 
+        // Can't have these as abstract values, as
+        // leveling equation requires real data
+
+        this.lvl = 1; // level
+        this.xp = 0; // experience
+        this.xpMax = Math.pow(this.lvl, 2) / 0.04; // xp until next level
+
         this.str = Number; // strength
         this.dex = Number; // dexterity
         this.int = Number; // intelligence
@@ -118,6 +125,16 @@ export class Living extends Entity {
         this.inv = []; // inventory
         this.effects = []; // buffs, ex. bleeding, on fire, fast healing, etc.
 
+    }
+
+    gainXP(xp) {
+        this.xp += xp;
+        this.xpMax = Math.pow(this.lvl, 2) / 0.04;
+        if (this.xp > this.xpMax) {
+            this.lvl++;
+            this.xp = 0;
+            this.callEvent('levelUp');
+        }
     }
 
     attack(entity) {
@@ -264,6 +281,8 @@ export class AI extends Living {
             else if (this.data && this.data.hostility[2].has(this.target.id)) hostility = 1;
             else hostility = this.opts.hostility;
 
+            this.hostility = hostility;
+
             let velocity = 1;
             if (hostility > 0) velocity *= -1;
 
@@ -319,8 +338,15 @@ export class Player extends Living {
 
         super('player', new THREE.Object3D(), sphereBody);
 
+        this.lvl = 1;
+        this.xp = 0;
+
         this.hp = 20;
         this.hpMax = 20;
+
+        this.mp = 5;
+        this.mpMax = 5;
+
         this.spd = 1;
         this.dmg = 1;
     }
@@ -456,10 +482,9 @@ export class NPC extends AI {
         if (!npcs[name])
             throw new Error('Error: cannot find NPC with id of ' + name);
         const data = npcs[name];
-        
+
         this.data = data;
 
-        this.opts.hostility = 1;
         this.inv = data.inv;
 
         for (let key in data.stats) this[key] = data.stats[key];

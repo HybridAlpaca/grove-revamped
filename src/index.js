@@ -22,8 +22,13 @@
  * */
 
 
+import {
+    HUD
+} from './mechanics/gui';
+
 let NPC = require('./entity').NPC;
 
+new HUD();
 
 window.onerror = alert; // use only in dev
 

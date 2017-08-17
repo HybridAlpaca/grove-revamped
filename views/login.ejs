@@ -42,5 +42,16 @@
                     $("#flipbook").turn('next');
                 }, 500);
             });
+
+            $("#flipbook").click(function(e) {
+                if ($('input:focus').length) return;
+                var pWidth = $(this).innerWidth(); //use .outerWidth() if you want borders
+                var pOffset = $(this).offset();
+                var x = e.pageX - pOffset.left;
+                if (pWidth / 2 > x)
+                    $(this).turn('previous'); // left
+                else
+                    $(this).turn('next'); // right
+            });
         </script>
 </body>
