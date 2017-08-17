@@ -14,7 +14,7 @@ module.exports = function(controls) {
         var element = document.body;
 
         var pointerlockchange = function(event) {
-            
+
             G.get('events').publish('system.pointerlock.enter', {});
 
             if (document.pointerLockElement === element || document.mozPointerLockElement === element || document.webkitPointerLockElement === element) {
@@ -51,41 +51,44 @@ module.exports = function(controls) {
         document.addEventListener('mozpointerlockerror', pointerlockerror, false);
         document.addEventListener('webkitpointerlockerror', pointerlockerror, false);
 
-        $('.pntrlk').click(function(event) {
-            instructions.style.display = 'none';
+        setInterval(() => {
+            $('.pntrlk').click(function(event) {
+                instructions.style.display = 'none';
 
-            // Ask the browser to lock the pointer
-            element.requestPointerLock = element.requestPointerLock || element.mozRequestPointerLock || element.webkitRequestPointerLock;
+                // Ask the browser to lock the pointer
+                element.requestPointerLock = element.requestPointerLock || element.mozRequestPointerLock || element.webkitRequestPointerLock;
 
-            if (/Firefox/i.test(navigator.userAgent)) {
+                if (/Firefox/i.test(navigator.userAgent)) {
 
-                var fullscreenchange = function(event) {
+                    var fullscreenchange = function(event) {
 
-                    if (document.fullscreenElement === element || document.mozFullscreenElement === element || document.mozFullScreenElement === element) {
+                        if (document.fullscreenElement === element || document.mozFullscreenElement === element || document.mozFullScreenElement === element) {
 
-                        document.removeEventListener('fullscreenchange', fullscreenchange);
-                        document.removeEventListener('mozfullscreenchange', fullscreenchange);
+                            document.removeEventListener('fullscreenchange', fullscreenchange);
+                            document.removeEventListener('mozfullscreenchange', fullscreenchange);
 
-                        element.requestPointerLock();
+                            element.requestPointerLock();
+                        }
+
                     }
+
+                    document.addEventListener('fullscreenchange', fullscreenchange, false);
+                    document.addEventListener('mozfullscreenchange', fullscreenchange, false);
+
+                    element.requestFullscreen = element.requestFullscreen || element.mozRequestFullscreen || element.mozRequestFullScreen || element.webkitRequestFullscreen;
+
+                    element.requestFullscreen();
+
+                }
+                else {
+
+                    element.requestPointerLock();
 
                 }
 
-                document.addEventListener('fullscreenchange', fullscreenchange, false);
-                document.addEventListener('mozfullscreenchange', fullscreenchange, false);
+            });
 
-                element.requestFullscreen = element.requestFullscreen || element.mozRequestFullscreen || element.mozRequestFullScreen || element.webkitRequestFullscreen;
-
-                element.requestFullscreen();
-
-            }
-            else {
-
-                element.requestPointerLock();
-
-            }
-
-        });
+        }, 500);
 
     }
     else {

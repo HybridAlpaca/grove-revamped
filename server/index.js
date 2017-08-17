@@ -20,7 +20,7 @@ app.use(session({
 
 require('./mongo')(mongoose, app);
 
-/* Conflicts with Heroku servers 
+/ Conflicts with Heroku servers 
 
 
    function ensureSecure(req, res, next) {
@@ -30,7 +30,7 @@ require('./mongo')(mongoose, app);
 }
 
 app.all('*', ensureSecure); // at top of routing calls
-*/
+
 
 app.get('/', (req, res) => res.render(path.resolve(__dirname, '../', 'views', req.session.user ? 'dashboard.ejs' : 'index.ejs')));
 app.get('/logout', (req, res) => {

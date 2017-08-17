@@ -23,10 +23,10 @@
 -->
 
 <body>
-    <div id="blocker" class='pntrlk'>
+    <div id="blocker">
 
-        <div id="instructions" class='pntrlk'>
-            <img src='//samherbert.net/svg-loaders/svg-loaders/three-dots.svg'>
+        <div id="instructions">
+            <img src='/public/assets/img/loading.svg'>
             <br>
             <p id='loaded'>[ loading ]</p>
         </div>
@@ -43,8 +43,8 @@
         <hr id='gui-hr'>
         <div id='gui-content'>[ loading ]</div>
         <div id='gui-buttons'>
-            <button class='play-btn btn waves-effect waves-light light-green z-depth-3' onclick='$("#gui").fadeOut(400)'>Resume</button>
-            <button class='play-btn btn waves-effect waves-light red z-depth-3' onclick='window.location = /'>Close</button>
+            <button class='play-btn btn waves-effect waves-light light-green z-depth-3 pntrlk' onclick='$("#gui").fadeOut(400)'>Resume</button>
+            <a class='play-btn btn waves-effect waves-light red z-depth-3' href="/">Close</a>
         </div>
     </div>
 

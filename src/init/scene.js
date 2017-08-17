@@ -21,7 +21,10 @@ module.exports = () => {
 
     THREE.DefaultLoadingManager.onLoad = () => {
         console.log('Loading complete');
-        if (!$('#instructions').has('h4').length) $('#instructions').html(`<h4>${loader[Math.floor(Math.random() * loader.length)]}</h4>`);
+        if (!$('#instructions').has('h4').length) $('#instructions').html(`
+        <h4>${loader[Math.floor(Math.random() * loader.length)]}</h4>
+        <button class='play-btn btn waves-effect waves-light light-green z-depth-3'>Play</button>
+        `).addClass('pntrlk');
     };
 
     THREE.DefaultLoadingManager.onError = (item) => {
