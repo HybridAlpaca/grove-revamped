@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>The Grove</title>
+    <title>The Grove | Play</title>
     <link rel='icon' href='/assets/icons/tree.png'>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
     <link rel='stylesheet' href='/css/play.css'>
@@ -26,11 +26,10 @@
     <div id="blocker" class='pntrlk'>
 
         <div id="instructions" class='pntrlk'>
-            <img src='/assets/img/loader.gif'>
+            <img src='//samherbert.net/svg-loaders/svg-loaders/three-dots.svg'>
             <br>
             <p id='loaded'>[ loading ]</p>
         </div>
-
     </div>
 
     <div id='overlay' style='display:none;'></div>
@@ -44,15 +43,16 @@
         <hr id='gui-hr'>
         <div id='gui-content'>[ loading ]</div>
         <div id='gui-buttons'>
-            <button class='btn pntrlk' onclick='$("#gui").fadeOut(400)'>Sounds Good</button>
-            <button class='btn pntrlk' onclick='$("#gui").fadeOut(400)'>Close</button>
+            <button class='play-btn btn waves-effect waves-light light-green z-depth-3' onclick='$("#gui").fadeOut(400)'>Resume</button>
+            <button class='play-btn btn waves-effect waves-light red z-depth-3' onclick='window.location = /'>Close</button>
         </div>
     </div>
 
+    
     <img id='quests' src='/assets/icons/stabbed-note.png' width=50>
 
     <div id='hud'>
-        <canvas id='hud-canvas' width='578' height='200'>Oh noes!  Your browser doesn't support the HTML5 Canvas API. ( Use Chrome! )</canvas>
+        <canvas id='hud-canvas' width='578' height='200'>Your browser doesn't support the HTML5 Canvas API. ( Use Chrome! )</canvas>
     </div>
 
     <script src="//code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
@@ -60,7 +60,7 @@
 
     <script>
     
-        // because cannon.js logs are annoying as fu[k
+        
     
         window.console.__error = window.console.error;
         window.console.__warn = window.console.warn;
