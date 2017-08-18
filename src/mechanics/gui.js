@@ -69,7 +69,7 @@ export class HUD {
         this.ctx.beginPath();
         this.ctx.arc(this.centerX - this.radiusSmall - 15, this.canvas.height - this.radiusSmall - 15, this.radiusSmall, 0, 2 * Math.PI, false);
         this.ctx.clip();
-        this.ctx.fillStyle = '#0000cc';
+        this.ctx.fillStyle = '#000080';
         this.ctx.fillRect(this.centerX - this.radiusSmall * 2 - 15, this.canvas.height - 15, this.radiusSmall * 2, -(G.get('player').mp / G.get('player').mpMax) * this.radiusSmall * 2);
         this.ctx.restore();
 
@@ -86,8 +86,8 @@ export class HUD {
         this.ctx.beginPath();
         this.ctx.arc(this.centerX + this.radiusSmall + 15, this.canvas.height - this.radiusSmall - 15, this.radiusSmall, 0, 2 * Math.PI, false);
         this.ctx.clip();
-        this.ctx.fillStyle = '#00cc00';
-        this.ctx.fillRect(this.centerX + 15, this.canvas.height - 15, this.radiusSmall * 2, -(G.get('player').hp / G.get('player').hpMax) * this.radiusSmall * 2);
+        this.ctx.fillStyle = '#006400';
+        this.ctx.fillRect(this.centerX + 15, this.canvas.height - 15, this.radiusSmall * 2, -(G.get('player').stm / G.get('player').stmMax) * this.radiusSmall * 2);
         this.ctx.restore();
 
         // STAMINA BAR BORDER
@@ -139,5 +139,5 @@ window.addEventListener('keypress', (e) => {
 });
 
 $(document).keyup((e) => {
-    if (e.key.toLowerCase() == 'escape') new GUI('Paused', 'The Grove is currently paused. :)');
+    if (e.key.toLowerCase() == 'escape') $('#pause').show();
 });

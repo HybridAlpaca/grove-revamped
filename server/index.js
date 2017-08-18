@@ -15,9 +15,10 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(session({
-    secret: 'ndeivbfrhwbyrwhfyewhrfewihrbverwbvjhebbj'
+  secret: '434dbc979dde137b5a2a5a4916464fecc8f7997f0caebd19e6e5d48b622a896b', // is a cookie
+  name: 'TG_USR_SESSION',
+  secure: false
 }));
-
 require('./mongo')(mongoose, app);
 
 /* Conflicts with Heroku servers 
@@ -44,6 +45,15 @@ app.get('/play', (req, res) => res.render(path.resolve(__dirname, '../', 'views'
 app.get('/login', (req, res) => res.render(path.resolve(__dirname, '../', 'views', 'login.ejs')));
 app.get('/register', (req, res) => res.render(path.resolve(__dirname, '../', 'views', 'register.ejs')));
 
+
+
+
+
+
+app.get('/register', (req, res) => {
+  res.render('../views/register.ejs');
+  console.log(new Date() + 'Register Activated.');
+});
 app.listen(process.env.PORT || 8080, (listening) => {
     if (!process.env.NODE_ENV)
         console.log('Listening For conections on 0.0.0.0');

@@ -12,7 +12,6 @@ var PointerLockControls = module.exports = function(camera, cannonBody) {
     var footstep = new Audio('/assets/sfx/leaves01.ogg');
 
     var eyeYPos = 2; // eyes are 2 meters above the ground
-    var velocityFactor = 0.5;
     var jumpVelocity = 10;
     var scope = this;
 
@@ -31,6 +30,7 @@ var PointerLockControls = module.exports = function(camera, cannonBody) {
     var moveRight = false;
 
     var canJump = false; // white kid
+    var isSprinting = false;
 
     var contactNormal = new CANNON.Vec3(); // Normal in the contact, pointing *out* of whatever the player touched
     var upAxis = new CANNON.Vec3(0, 1, 0);
@@ -67,10 +67,6 @@ var PointerLockControls = module.exports = function(camera, cannonBody) {
         // If contactNormal.dot(upAxis) is between 0 and 1, we know that the contact normal is somewhat in the up direction.
         if (contactNormal.dot(upAxis) > 0.5) { // Use a "good" threshold value between 0 and 1 here!
             canJump = true;
-            if (!G.get('player')) return;
-            let force = G.get('player').body.velocity.y;
-            if (force <= -60)
-                G.get('player').damage(-Math.floor(force));
         }
     });
 
@@ -131,6 +127,9 @@ var PointerLockControls = module.exports = function(camera, cannonBody) {
                 }
                 canJump = false;
                 break;
+            case 16:
+                isSprinting = true;
+                break;
         }
 
     };
@@ -157,6 +156,9 @@ var PointerLockControls = module.exports = function(camera, cannonBody) {
             case 39: // right
             case 68: // d
                 moveRight = false;
+                break;
+            case 16:
+                isSprinting = false;
                 break;
 
         }
@@ -190,18 +192,26 @@ var PointerLockControls = module.exports = function(camera, cannonBody) {
 
         inputVelocity.set(0, 0, 0);
 
+        let velocFactor = G.get('player').spd;
+
+        if (isSprinting && G.get('player').stm > 0) {
+            G.get('player').lastUsedStamina = Date.now();
+            velocFactor *= 2;
+            G.get('player').stm -= 0.1;
+        }
+
         if (moveForward) {
-            inputVelocity.z = -velocityFactor * delta;
+            inputVelocity.z = -velocFactor * delta;
         }
         if (moveBackward) {
-            inputVelocity.z = velocityFactor * delta;
+            inputVelocity.z = velocFactor * delta;
         }
 
         if (moveLeft) {
-            inputVelocity.x = -velocityFactor * delta;
+            inputVelocity.x = -velocFactor * delta;
         }
         if (moveRight) {
-            inputVelocity.x = velocityFactor * delta;
+            inputVelocity.x = velocFactor * delta;
         }
 
         // I don't know why, but uncommenting the following line

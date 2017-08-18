@@ -99,6 +99,7 @@ export class Living extends Entity {
 
         this.lastDamaged = 0;
         this.lastAttacked = 0;
+        this.lastUsedStamina = 0;
 
         // stats
 
@@ -152,11 +153,17 @@ export class Living extends Entity {
         this.callEvent('damage');
     }
 
-    heal(hp) {
+    heal(hp, stm, mp) {
         if (!G.get('controls').enabled) return;
-        // only heal if at least 5 seconds have gone by without being hurt
-        if (Date.now() - this.lastDamaged > 5000) this.hp += hp;
+
+        this.hp += hp;
+        this.mp += mp;
+        this.stm += stm;
+
         if (this.hp >= this.hpMax) this.hp = this.hpMax;
+        if (this.mp >= this.mpMax) this.mp = this.mpMax;
+        if (this.stm >= this.stmMax) this.stm = this.stmMax;
+
         this.callEvent('heal');
     }
 
@@ -170,7 +177,13 @@ export class Living extends Entity {
 
     update(delta) {
         super.update(delta);
-        if (G.get('tick') % 50 == 0) this.heal(1);
+        if (G.get('tick') % 50 == 0) {
+            this.heal(
+                Date.now() - this.lastDamaged > 5000 ? 1 : 0,
+                1,
+                Date.now() - this.lastUsedStamina > 2000 ? 1 : 0
+            );
+        }
     }
 }
 
@@ -327,6 +340,18 @@ export class Player extends Living {
             mass
         });
         sphereBody.addShape(sphereShape);
+        sphereBody.addEventListener('collide', (event) => {
+
+            const contact = event.contact;
+            const upAxis = new CANNON.Vec3(0, 1, 0);
+            let contactNormal = new CANNON.Vec3();
+            if (contact.bi.id == sphereBody.id)
+                contact.ni.negate(contactNormal);
+            else
+                contactNormal.copy(contact.ni); // bi is something else. Keep the normal as it is
+            if (contactNormal.dot(upAxis) > 0.5 && sphereBody.velocity.y <= -60)
+                this.hp += Math.floor(sphereBody.velocity.y / 5);
+        });
         let raycaster = new THREE.Raycaster(new THREE.Vector3(0, 40, 0), new THREE.Vector3(0, -1, 0));
         let intersects = raycaster.intersectObjects(G.get('scene').children, true);
         if (intersects.length > 0) {
@@ -344,10 +369,13 @@ export class Player extends Living {
         this.hp = 20;
         this.hpMax = 20;
 
+        this.stm = 10;
+        this.stmMax = 10;
+
         this.mp = 5;
         this.mpMax = 5;
 
-        this.spd = 1;
+        this.spd = 0.5;
         this.dmg = 1;
     }
 

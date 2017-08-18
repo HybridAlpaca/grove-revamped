@@ -33,7 +33,7 @@ new HUD();
 window.onerror = alert; // use only in dev
 
 window.Grove = {
-    version: '1.3.5',
+    version: '1.3.7',
     globals: require('globals')
 };
 

@@ -10,6 +10,9 @@
   },
   "scripts": {
     "start": "node .",
+    "dev": "node . & webpack -w",
+    "build": "webpack",
+    "watch": "webpack -w",
     "debug": "DEBUG=* node ."
   },
   "name": "Grove",

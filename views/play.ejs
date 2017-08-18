@@ -44,7 +44,19 @@
         <div id='gui-content'>[ loading ]</div>
         <div id='gui-buttons'>
             <button class='play-btn btn waves-effect waves-light light-green z-depth-3 pntrlk' onclick='$("#gui").fadeOut(400)'>Resume</button>
-            <a class='play-btn btn waves-effect waves-light red z-depth-3' href="/">Close</a>
+            <a class='play-btn btn waves-effect waves-light red z-depth-3' href="#">Close</a>
+        </div>
+    </div>
+    
+    <div id='pause' class="card blue-grey darken-1" style='display: none;'>
+        <div class="card-content white-text">
+            <span class="card-title">Paused</span>
+            <p>The Grove is currently paused.</p>
+        </div>
+        
+        <div class="card-action">
+            <button class='play-btn btn waves-effect waves-light light-green z-depth-3 pntrlk' onclick='$("#pause").fadeOut(400)'>Resume</button>
+            <a class='play-btn btn waves-effect waves-light red z-depth-3' href="/">Exit</a>
         </div>
     </div>
 

@@ -169,3 +169,10 @@ body {
     margin-bottom: 30px;
     margin-right: 30px;
 }
+
+#pause {
+    position: fixed;
+    width: 60%;
+    left: 20%;
+    top: 15%;
+}

@@ -35,3 +35,13 @@ The Team
 - Nate Goldsborough
 - Hunter Sokolis
 - Michael Rimmile
+- 
+
+
+License:
+
+
+- The Grove is copyright 2017 by Hybrid Alpaca Game Studios. All images, story, and game are copyright of Hybrid Alapca Game Studios.
+Copying or redistributing this game or content without the consent of Hybrid Alpaca Game Studios is illegal and unlawful.
+
+ -  Most images are not owned by Hybrid Alpaca Game Studios.
