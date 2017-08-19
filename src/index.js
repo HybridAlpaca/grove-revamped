@@ -50,6 +50,7 @@ let Wicket = window.wicket = new NPC('wicket', {
 require('./init/world')();
 require('./init/scene')();
 require('./init/update')();
+require('./potions');
 require('./init/interact');
 
 require('./mechanics/gui');

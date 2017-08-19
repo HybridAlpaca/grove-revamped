@@ -177,13 +177,11 @@ export class Living extends Entity {
 
     update(delta) {
         super.update(delta);
-        if (G.get('tick') % 50 == 0) {
-            this.heal(
-                Date.now() - this.lastDamaged > 5000 ? 1 : 0,
-                1,
-                Date.now() - this.lastUsedStamina > 2000 ? 1 : 0
-            );
-        }
+        this.heal(
+            Date.now() - this.lastDamaged > 5000 ? 1 / 50 : 0,
+            Date.now() - this.lastUsedStamina > 2000 ? 1 / 50 : 0,
+            1
+        );
     }
 }
 
@@ -340,6 +338,9 @@ export class Player extends Living {
             mass
         });
         sphereBody.addShape(sphereShape);
+        
+        // fall damage
+        
         sphereBody.addEventListener('collide', (event) => {
 
             const contact = event.contact;
@@ -349,9 +350,12 @@ export class Player extends Living {
                 contact.ni.negate(contactNormal);
             else
                 contactNormal.copy(contact.ni); // bi is something else. Keep the normal as it is
-            if (contactNormal.dot(upAxis) > 0.5 && sphereBody.velocity.y <= -60)
+            if (contactNormal.dot(upAxis) > 0.5 && sphereBody.velocity.y <= -30)
                 this.hp += Math.floor(sphereBody.velocity.y / 5);
         });
+        
+        // spawn on ground if possible, otherwise spawn high in the air
+        
         let raycaster = new THREE.Raycaster(new THREE.Vector3(0, 40, 0), new THREE.Vector3(0, -1, 0));
         let intersects = raycaster.intersectObjects(G.get('scene').children, true);
         if (intersects.length > 0) {

@@ -9,10 +9,25 @@
             "spd": 20,
             "dmg": 15
         },
-        "hostility": [[], ["player"], []],
+        "hostility": [
+            [],
+            ["player"],
+            []
+        ],
         "meta": {
             "spawn": [115, 32, -30],
             "sounds": ["wicket.mp3", "silence.wav", "wicket-hurt.mp3", "silence.wav"]
+        }
+    },
+    "bartholomew": {
+        "name": "Bartholomew",
+        "id": "bartholomew",
+        "path": "bartholomew/bartholomew",
+        "stats": {
+            "hp": 100,
+            "hpMax": 100,
+            "spd": 12,
+            "dmg": 7
         }
     }
 }

@@ -38,7 +38,7 @@ export class Inventory {
                 for (let key in $(this).data('item').effects) {
                     G.get('player')[key] += $(this).data('item').effects[key];
                 }
-            G.get('player').inv.splice(G.get('player').inv.indexOf($(this).data('item'), 1));
+            G.get('player').inv.splice(G.get('player').inv.indexOf($(this).data('item')), 1);
         });
         new GUI('Inventory', div);
     }
