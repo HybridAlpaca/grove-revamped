@@ -4,10 +4,10 @@
         "path": "slime/slime",
         "id": "slime",
         "stats": {
-            "hp": 3,
-            "hpMax": 3,
-            "dmg": 1,
-            "spd": 5
+            "hp": 5,
+            "hpMax": 5,
+            "dmg": 5,
+            "spd": 7
         },
         "hostility": [
             ["wicket", "player"],
@@ -30,10 +30,10 @@
         "path": "slime/slime",
         "id": "slime.red",
         "stats": {
-            "hp": 5,
-            "hpMax": 5,
-            "dmg": 2,
-            "spd": 5
+            "hp": 10,
+            "hpMax": 10,
+            "dmg": 15,
+            "spd": 7
         },
         "hostility": [
             ["wicket", "player"],
@@ -63,10 +63,10 @@
         "path": "slime/slime",
         "id": "slime.blue",
         "stats": {
-            "hp": 1,
-            "hpMax": 1,
-            "dmg": 7,
-            "spd": 15
+            "hp": 3,
+            "hpMax": 3,
+            "dmg": 25,
+            "spd": 25
         },
         "hostility": [
             ["wicket", "player"],

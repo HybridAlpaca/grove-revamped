@@ -20,5 +20,106 @@
         "effects": {
             "hp": 5
         }
+    },
+    "hpostionsm": {
+        "name": "Small Draught of Health",
+        "id": "hpotionsm",
+        "desc": "A small healing potion for all your small healing needs.",
+        "path": "/assets/icons/health-potion.png",
+        "effects": {
+            "hp": 5
+        }
+    },
+    "hpostionmd": {
+        "name": "Average Draught of Health",
+        "id": "hpotionmd",
+        "desc": "A slightly bigger vial of liquid health, tastes slightly of toenail fungus.",
+        "path": "/assets/icons/health-potion.png",
+        "effects": {
+            "hp": 10
+        }
+    },
+    "hpostionlg": {
+        "name": "Large Draught of Health",
+        "id": "hpotionlg",
+        "desc": "Capable of healing almost all wounds, the toe fungus taste is undeniable in this potion.",
+        "path": "/assets/icons/health-potion.png",
+        "effects": {
+            "hp": 15
+        }
+    },
+    "spostionsm": {
+        "name": "Small Draught of Stamina",
+        "id": "spotionsm",
+        "desc": "Restores a small amount of stamina with an invigorating serum and a hint of lemon.",
+        "path": "/assets/icons/stamina-potion.png",
+        "effects": {
+            "stm": 5
+        }
+    },
+    "spostionmd": {
+        "name": "Medium Draught of Stamina",
+        "id": "spotionmd",
+        "desc": "Restores a moderate amount of stamina with an even more invigorating serum and a dash of... lime?",
+        "path": "/assets/icons/stamina-potion.png",
+        "effects": {
+            "stm": 10
+        }
+    },
+    "spostionlg": {
+        "name": "Large Draught of Stamina",
+        "id": "spotionlg",
+        "desc": "A very invigorating potion which restores a lot of stamina but has a rather odd taste.",
+        "path": "/assets/icons/stamina-potion.png",
+        "effects": {
+            "stm": 15
+        }
+    },
+    "mpostionsm": {
+        "name": "Small Vial of Magic",
+        "id": "mpotionsm",
+        "desc": "This potion glows faintly when exposed to light.",
+        "path": "/assets/icons/mana-potion.png",
+        "effects": {
+            "mp": 5
+        }
+    },
+    "mpostionmd": {
+        "name": "Average Vial of Magic",
+        "id": "mpotionmd",
+        "desc": "'Wow!' -- Man after drinking this",
+        "path": "/assets/icons/mana-potion.png",
+        "effects": {
+            "mp": 10
+        }
+    },
+    "mpostionlg": {
+        "name": "Large Vial of Magic",
+        "id": "mpotionlg",
+        "desc": "Feel the magic coursing through your veins as you sip on this delux magical vial.",
+        "path": "/assets/icons/mana-potion.png",
+        "effects": {
+            "mp": 15
+        }
+    },
+    "whpoison": {
+        "name": "Weak Health Poison",
+        "id": "whpoison",
+        "desc": "This poison has no description; simply because it is poisonous.",
+        "type": "poison",
+        "path": "/assets/icons/health-poison.png",
+        "effects": {
+            "hp": -5
+        }
+    },
+    "hsafgpoison": {
+        "name": "Hella Strong As Fuck God Poison",
+        "id": "hsafgpoison",
+        "desc": "This poison has no description; simply because it is poisonous.",
+        "type": "poison",
+        "path": "/assets/icons/health-poison.png",
+        "effects": {
+            "hp": -100000000000
+        }
     }
 }

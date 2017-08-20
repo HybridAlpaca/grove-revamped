@@ -11,12 +11,13 @@ var PointerLockControls = module.exports = function(camera, cannonBody) {
 
     var footstep = new Audio('/assets/sfx/leaves01.ogg');
 
-    var eyeYPos = 2; // eyes are 2 meters above the ground
+    var eyePos = 1; // eyes are 2 meters above the ground
     var jumpVelocity = 10;
     var scope = this;
 
     var pitchObject = new THREE.Object3D();
     pitchObject.add(camera);
+    camera.position.y += eyePos;
 
     var yawObject = new THREE.Object3D();
     yawObject.position.y = 2;
@@ -179,7 +180,7 @@ var PointerLockControls = module.exports = function(camera, cannonBody) {
     this.getDirection = function(targetVec) {
         targetVec.set(0, 0, -1);
         quat.multiplyVector3(targetVec);
-    };
+    }
 
     // Moves the camera to the Cannon.js object position and adds velocity to the object if the run key is down
     var inputVelocity = new THREE.Vector3();
@@ -194,11 +195,9 @@ var PointerLockControls = module.exports = function(camera, cannonBody) {
 
         let velocFactor = G.get('player').spd;
 
-        if (isSprinting &&
-            G.get('player').stm > 0 &&
-            (moveForward || moveBackward || moveLeft || moveRight)) {
+        if (isSprinting && G.get('player').stm > 0) {
             velocFactor *= 2;
-            G.get('player').stm -= 0.2;
+            G.get('player').stm--;
             G.get('player').lastUsedStamina = Date.now();
         }
 

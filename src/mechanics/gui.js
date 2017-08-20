@@ -25,20 +25,39 @@ export class Inventory {
         let data = G.get('player').inv;
         let div = $('<div>');
         for (let item of data) {
-            $('<img>')
-                .attr('src', item.path)
-                .attr('title', item.name)
-                .attr('width', 50)
-                .data('item', item)
-                .appendTo(div);
+            (function() {
+                let img = $('<img>')
+                    .attr('src', item.path)
+                    .attr('title', item.name)
+                    .attr('width', 50)
+                    .data('item', item)
+                    .appendTo(div)
+            })();
         }
         div.on('click', 'img', function() {
+
+            var item = $(this).data('item'); // ignore this part
+
+            // hide icon
             $(this).hide();
-            if ($(this).data('item').effects)
+            // remove from inventory
+            G.get('player').inv.splice(G.get('player').inv.indexOf(item), 1);
+
+            if (item.type == 'poison') {
+                G.get('player').poisons.push(item); // add this to list of poisons player
+                // has on their sword
+                Materialize.toast('Your blade is now poisoned!', 700);
+            }
+
+            // do effects to player if it has them
+            else if (item.effects)
+
                 for (let key in $(this).data('item').effects) {
-                    G.get('player')[key] += $(this).data('item').effects[key];
+
+                    G.get('player')[key] += item.effects[key];
+
                 }
-            G.get('player').inv.splice(G.get('player').inv.indexOf($(this).data('item')), 1);
+
         });
         new GUI('Inventory', div);
     }

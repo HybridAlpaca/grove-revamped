@@ -4,8 +4,8 @@
         "id": "wicket",
         "path": "wicket/wicket",
         "stats": {
-            "hp": 30,
-            "hpMax": 30,
+            "hp": 300,
+            "hpMax": 300,
             "spd": 20,
             "dmg": 15
         },

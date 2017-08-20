@@ -38,7 +38,7 @@ body {
 
 #label {
     position: absolute;
-    left: 41.25%;
+    left: 40.2%;
     top: 52.5%;
     width: 20%;
     text-align: center;
@@ -165,10 +165,8 @@ body {
 
 #crosshair {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: transform(-50%, -50%);
-    margin-right: 50px;
+    left: 48.875%;
+    top: 49.5%;
 }
 
 #pause {

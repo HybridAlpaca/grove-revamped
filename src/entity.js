@@ -4,7 +4,6 @@
 
 const THREE = require('three'),
     CANNON = require('cannon'),
-    TWEEN = require('tween.js'),
     G = require('globals'),
     $ = require('jquery');
 
@@ -100,6 +99,7 @@ export class Living extends Entity {
         this.lastDamaged = 0;
         this.lastAttacked = 0;
         this.lastUsedStamina = 0;
+        this.lastUsedMagic = 0;
 
         // stats
 
@@ -177,10 +177,11 @@ export class Living extends Entity {
 
     update(delta) {
         super.update(delta);
+
         this.heal(
-            Date.now() - this.lastDamaged > 5000 ? 1 / 50 : 0,
-            Date.now() - this.lastUsedStamina > 2000 ? 1 / 50 : 0,
-            1
+            Date.now() - this.lastDamaged > 5000 ? 1 / 10 : 0,
+            Date.now() - this.lastUsedStamina > 2000 ? 1 / 10 : 0,
+            Date.now() - this.lastUsedMagic > 2000 ? 1 / 10 : 0
         );
     }
 }
@@ -193,7 +194,6 @@ export class AI extends Living {
 
         this.target = null;
         this.seen = false;
-        this.tween = false;
 
         // properties
 
@@ -234,12 +234,12 @@ export class AI extends Living {
             else if (this.data && this.data.hostility && this.data.hostility[1].has(entity.id)) continue;
             else if (this.target && mypos.distanceTo(entity.mesh.position) < mypos.distanceTo(this.target.mesh.position)) {
                 this.target = entity;
-                if (this.sounds[0] && G.get('controls').enabled) this.sounds[0].play();
+                if (this.sounds[0] && this.hp > 0 && G.get('controls').enabled) this.sounds[0].play();
                 this.callEvent('newTarget', this.target);
             }
             else if (!this.target) {
                 this.target = entity;
-                if (this.sounds[0] && G.get('controls').enabled) this.sounds[0].play();
+                if (this.sounds[0] && this.hp > 0 && G.get('controls').enabled) this.sounds[0].play();
                 this.callEvent('newTarget', this.target);
             }
         }
@@ -248,40 +248,14 @@ export class AI extends Living {
 
         const VELOCITYCAP = this.spd || 7;
 
-        this.addEventListener('damage', () => { if (this.sounds[2] && G.get('controls').enabled && !this.sounds[2].isPlaying && this.hp > 0) this.sounds[2].play() });
-        this.addEventListener('kill', () => { if (this.sounds[3] && G.get('controls').enabled && !this.sounds[3].isPlaying) this.sounds[3].play() });
+        this.addEventListener('damage', () => { if (this.sounds[2] && this.hp > 0 && G.get('controls').enabled && !this.sounds[2].isPlaying && this.hp > 0) this.sounds[2].play() });
+        this.addEventListener('kill', () => { if (this.sounds[3] && this.hp > 0 && G.get('controls').enabled && !this.sounds[3].isPlaying) this.sounds[3].play() });
 
         if (this.target) {
+
             let targetpos = this.target.mesh.position;
 
-            // tweened lookat
-            if (!this.tween) {
-                this.tween = true;
-                var startRotation = new THREE.Euler().copy(this.mesh.rotation);
-
-                // final rotation (with lookAt)
-                this.mesh.lookAt(new THREE.Vector3(targetpos.x, mypos.y, targetpos.z));
-                var endRotation = new THREE.Euler().copy(this.mesh.rotation);
-
-                // revert to original rotation
-                this.mesh.rotation.copy(startRotation);
-
-                // Tween
-                let tween = new TWEEN.Tween(this.mesh.rotation)
-                    .to({
-                        x: startRotation.x,
-                        y: endRotation.y,
-                        z: startRotation.z
-                    }, 60)
-                    .start()
-                    .onComplete(() => {
-                        this.tween = false;
-                        G.get('tweens').splice(G.get('tweens').indexOf(tween), 1);
-                    });
-
-                G.get('tweens').push(tween);
-            }
-
+            this.mesh.lookAt(new THREE.Vector3(targetpos.x, this.mesh.position.y, targetpos.z));
 
             // if you would like to witness two cubes have sex,
             // comment out the following if statement, but leave
@@ -338,9 +312,9 @@ export class Player extends Living {
             mass
         });
         sphereBody.addShape(sphereShape);
-        
+
         // fall damage
-        
+
         sphereBody.addEventListener('collide', (event) => {
 
             const contact = event.contact;
@@ -353,9 +327,9 @@ export class Player extends Living {
             if (contactNormal.dot(upAxis) > 0.5 && sphereBody.velocity.y <= -30)
                 this.hp += Math.floor(sphereBody.velocity.y / 5);
         });
-        
+
         // spawn on ground if possible, otherwise spawn high in the air
-        
+
         let raycaster = new THREE.Raycaster(new THREE.Vector3(0, 40, 0), new THREE.Vector3(0, -1, 0));
         let intersects = raycaster.intersectObjects(G.get('scene').children, true);
         if (intersects.length > 0) {
@@ -367,17 +341,19 @@ export class Player extends Living {
 
         super('player', new THREE.Object3D(), sphereBody);
 
+        this.poisons = [];
+
         this.lvl = 1;
         this.xp = 0;
 
-        this.hp = 20;
-        this.hpMax = 20;
+        this.hp = 100;
+        this.hpMax = 100;
 
-        this.stm = 10;
-        this.stmMax = 10;
+        this.stm = 100;
+        this.stmMax = 100;
 
-        this.mp = 5;
-        this.mpMax = 5;
+        this.mp = 100;
+        this.mpMax = 100;
 
         this.spd = 0.5;
         this.dmg = 1;
