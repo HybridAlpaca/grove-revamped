@@ -64,7 +64,7 @@ module.exports = function animate(delta) {
 
         let intersects = raycaster.intersectObjects(entity.mesh.children, true);
         if (intersects.length) {
-            if (entity.data) $('#label').html(`${entity.data.name /* entity.id */} (${Math.floor(entity.hp)}/${entity.hpMax})`);
+            if (entity.data) $('#label').html(`${entity.data.name /* entity.id */} (${Math.round(entity.hp)}/${entity.hpMax})`);
             $('#crosshair').attr('src', '/assets/img/crosshair/crosshair-enemy.png');
         }
         else if (G.get('tick') % 30 == 0) {

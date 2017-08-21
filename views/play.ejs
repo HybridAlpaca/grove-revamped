@@ -44,7 +44,6 @@
         <div id='gui-content'>[ loading ]</div>
         <div id='gui-buttons'>
             <button class='play-btn btn waves-effect waves-light light-green z-depth-3 pntrlk' onclick='$("#gui").fadeOut(400)'>Resume</button>
-            <a class='play-btn btn waves-effect waves-light red z-depth-3' href="#">Close</a>
         </div>
     </div>
     
@@ -69,10 +68,14 @@
 
     <script src="//code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+    <script src='/socket.io/socket.io.js'></script>
 
     <script>
     
-        
+        var Grove = {
+            username: '<%= user.username %>',
+            password: '<%= user.password %>' // it's encrypted ;)
+        };
     
         window.console.__error = window.console.error;
         window.console.__warn = window.console.warn;
@@ -84,6 +87,7 @@
             if (!/^\.vertices\[/.test(out))
                 console.__warn(out);
         };
+        
     </script>
 
     <script src='/js/vendor.min.js'></script>

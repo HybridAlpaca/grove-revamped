@@ -20,6 +20,28 @@ export default class GUI {
     }
 }
 
+export class Menu {
+    constructor() {
+
+        let menu = $('<div>').attr('id', 'menu');
+        $('<h3>').attr('id', 'menu-levels').html('Character').click(() => new Character()).appendTo(menu);
+        $('<h3>').attr('id', 'menu-magic').html('Magic').click(() => new Magic()).appendTo(menu);
+        $('<h3>').attr('id', 'menu-inv').html('Inventory').click(() => new Inventory()).appendTo(menu);
+        $('<h3>').attr('id', 'menu-options').html('Options').appendTo(menu);
+        $('<div>').attr('id', 'menu-cross').appendTo(menu);
+
+        new GUI('Menu', menu);
+    }
+}
+
+export class Character {
+    constructor() {
+
+        new GUI('Menu', '<p>TODO</p>');
+        
+    }
+}
+
 export class Inventory {
     constructor() {
         let data = G.get('player').inv;
@@ -59,7 +81,17 @@ export class Inventory {
                 }
 
         });
+
         new GUI('Inventory', div);
+
+    }
+}
+
+export class Magic {
+    constructor() {
+
+        new GUI('Menu', '<p>TODO</p>');
+        
     }
 }
 
@@ -153,8 +185,8 @@ export class HUD {
 }
 
 window.addEventListener('keypress', (e) => {
-    if (e.keyCode == 73 || e.keyCode == 105)
-        new Inventory();
+    if (e.keyCode == 80 || e.keyCode == 112)
+        new Menu();
 });
 
 $(document).keyup((e) => {

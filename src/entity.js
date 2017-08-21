@@ -7,7 +7,7 @@ const THREE = require('three'),
     G = require('globals'),
     $ = require('jquery');
 
-// ADTs
+// ADT's
 
 export class Entity {
     constructor(id = 'Entity', mesh = new THREE.Object3D(), body = new CANNON.Body(), opts = {}) {
@@ -301,76 +301,7 @@ export class AI extends Living {
     }
 }
 
-// class declarations
-
-export class Player extends Living {
-    constructor() {
-        const mass = 5,
-            radius = 1.3;
-        let sphereShape = new CANNON.Sphere(radius);
-        let sphereBody = new CANNON.Body({
-            mass
-        });
-        sphereBody.addShape(sphereShape);
-
-        // fall damage
-
-        sphereBody.addEventListener('collide', (event) => {
-
-            const contact = event.contact;
-            const upAxis = new CANNON.Vec3(0, 1, 0);
-            let contactNormal = new CANNON.Vec3();
-            if (contact.bi.id == sphereBody.id)
-                contact.ni.negate(contactNormal);
-            else
-                contactNormal.copy(contact.ni); // bi is something else. Keep the normal as it is
-            if (contactNormal.dot(upAxis) > 0.5 && sphereBody.velocity.y <= -30)
-                this.hp += Math.floor(sphereBody.velocity.y / 5);
-        });
-
-        // spawn on ground if possible, otherwise spawn high in the air
-
-        let raycaster = new THREE.Raycaster(new THREE.Vector3(0, 40, 0), new THREE.Vector3(0, -1, 0));
-        let intersects = raycaster.intersectObjects(G.get('scene').children, true);
-        if (intersects.length > 0) {
-            let pos = intersects[0].point;
-            sphereBody.position.set(pos.x, pos.y, pos.z);
-        }
-        else
-            sphereBody.position.set(200, 2, 0);
-
-        super('player', new THREE.Object3D(), sphereBody);
-
-        this.poisons = [];
-
-        this.lvl = 1;
-        this.xp = 0;
-
-        this.hp = 100;
-        this.hpMax = 100;
-
-        this.stm = 100;
-        this.stmMax = 100;
-
-        this.mp = 100;
-        this.mpMax = 100;
-
-        this.spd = 0.5;
-        this.dmg = 1;
-    }
-
-    update(delta) {
-        super.update(delta);
-        $('#hp').html(`${this.hp}/${this.hpMax} hp`);
-        this.body.velocity.x *= 0.925;
-        this.body.velocity.z *= 0.925;
-    }
-
-    damage(dmg) {
-        super.damage(dmg);
-        $('#vignette').fadeIn(550).fadeOut(550);
-    }
-}
+// Semi-ADT's
 
 export class Creature extends AI {
     constructor(name, opts) {
@@ -642,5 +573,76 @@ export class NPC extends AI {
 
         });
 
+    }
+}
+
+// Class declarations
+
+export class Player extends Living {
+    constructor() {
+        const mass = 5,
+            radius = 1.3;
+        let sphereShape = new CANNON.Sphere(radius);
+        let sphereBody = new CANNON.Body({
+            mass
+        });
+        sphereBody.addShape(sphereShape);
+
+        // fall damage
+
+        sphereBody.addEventListener('collide', (event) => {
+
+            const contact = event.contact;
+            const upAxis = new CANNON.Vec3(0, 1, 0);
+            let contactNormal = new CANNON.Vec3();
+            if (contact.bi.id == sphereBody.id)
+                contact.ni.negate(contactNormal);
+            else
+                contactNormal.copy(contact.ni); // bi is something else. Keep the normal as it is
+            if (contactNormal.dot(upAxis) > 0.5 && sphereBody.velocity.y <= -30)
+                this.hp += Math.floor(sphereBody.velocity.y / 5);
+        });
+
+        // spawn on ground if possible, otherwise spawn high in the air
+
+        let raycaster = new THREE.Raycaster(new THREE.Vector3(0, 40, 0), new THREE.Vector3(0, -1, 0));
+        let intersects = raycaster.intersectObjects(G.get('scene').children, true);
+        if (intersects.length > 0) {
+            let pos = intersects[0].point;
+            sphereBody.position.set(pos.x, pos.y, pos.z);
+        }
+        else
+            sphereBody.position.set(200, 2, 0);
+
+        super('player', new THREE.Object3D(), sphereBody);
+
+        this.poisons = [];
+
+        this.lvl = 1;
+        this.xp = 0;
+
+        this.hp = 100;
+        this.hpMax = 100;
+
+        this.stm = 100;
+        this.stmMax = 100;
+
+        this.mp = 100;
+        this.mpMax = 100;
+
+        this.spd = 0.5;
+        this.dmg = 1;
+    }
+
+    update(delta) {
+        super.update(delta);
+        $('#hp').html(`${this.hp}/${this.hpMax} hp`);
+        this.body.velocity.x *= 0.925;
+        this.body.velocity.z *= 0.925;
+    }
+
+    damage(dmg) {
+        super.damage(dmg);
+        $('#vignette').fadeIn(550).fadeOut(550);
     }
 }

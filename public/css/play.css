@@ -113,6 +113,44 @@ body {
     cursor: pointer;
 }
 
+#menu-levels {
+    position: absolute;
+    left: 40%;
+}
+#menu-options {
+    position: absolute;
+    left: 42%;
+    top: 72%;
+}
+#menu-magic {
+    position: absolute;
+    left: 17.5%;
+    top: 50%;
+}
+#menu-inv {
+    position: absolute;
+    left: 68%;
+    top: 50%;
+}
+
+#menu-cross:before,
+#menu-cross:after {
+    position: absolute;
+    left: 49%;
+    content: ' ';
+    height: 400px;
+    width: 2px;
+    background-color: #333;
+}
+
+#menu-cross:before {
+    transform: rotate(45deg);
+}
+
+#menu-cross:after {
+    transform: rotate(-45deg);
+}
+
 #hud {
     position: absolute;
     bottom: 0px;

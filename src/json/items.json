@@ -119,7 +119,9 @@
         "type": "poison",
         "path": "/assets/icons/health-poison.png",
         "effects": {
-            "hp": -100000000000
+            "hp": -100000000000,
+            "mp": -100000000000,
+            "stm": -100000000000
         }
     }
 }

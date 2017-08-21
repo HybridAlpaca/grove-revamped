@@ -26,7 +26,8 @@ G.get('events').subscribe('system.update', () => {
         for (const entity of G.get('entities')) {
 
             let intersects = raycaster.intersectObjects(entity.mesh.children, true);
-            if (intersects.length) {
+            if (intersects.length &&
+                G.get('player').mesh.position.distanceTo(entity.mesh.position) < 10) {
                 entity.damage(0.2, G.get('player')); // deal magic damage
             }
 
@@ -41,7 +42,6 @@ G.get('events').subscribe('system.update', () => {
         setTimeout(() => forceStopped = false, 500);
     }
 });
-magic.emitter.particleCount = 0;
 
 function attack(event) {
     if (G.get('controls').enabled) {
@@ -100,12 +100,11 @@ function attack(event) {
 
 function attackAlt(event) {
     if (event.type == 'keydown' || event.type == 'mousedown' && !forceStopped) {
-        magic.emitter.particleCount = 1000;
         G.get('camera').add(magic.particleGroup.mesh);
+        magic.emitter.particleCount = 1000;
         isUsingMagic = true;
     }
     else {
-        magic.emitter.particleCount = 0;
         G.get('camera').remove(magic.particleGroup.mesh);
         isUsingMagic = false;
     }

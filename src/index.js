@@ -24,7 +24,8 @@
 
 import {
     HUD
-} from './mechanics/gui';
+}
+from './mechanics/gui';
 
 let NPC = require('./entity').NPC;
 
@@ -32,10 +33,8 @@ new HUD();
 
 window.onerror = alert; // use only in dev
 
-window.Grove = {
-    version: '1.3.7',
-    globals: require('globals')
-};
+window.Grove.version = '1.3.7';
+window.Grove.globals = require('globals');
 
 Math.interval = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 Array.prototype.has = function(data) {
