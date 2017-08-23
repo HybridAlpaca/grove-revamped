@@ -14,7 +14,6 @@ export class Entity {
 
         // Metadata
 
-        console.log(`Entity: ${id} created`);
         this.id = id;
         this.uuid = Math.random();
         this.events = {};

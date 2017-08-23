@@ -37,7 +37,7 @@ export class Menu {
 export class Character {
     constructor() {
 
-        new GUI('Menu', '<p>TODO</p>');
+        new GUI(window.Grove.username || 'Character', '<p>TODO</p>');
         
     }
 }

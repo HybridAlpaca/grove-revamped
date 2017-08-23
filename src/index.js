@@ -41,6 +41,8 @@ Array.prototype.has = function(data) {
     return this.indexOf(data) > -1;
 };
 
+console.log(`Starting The Grove v.${window.Grove.version} pre-alpha`);
+
 let Wicket = window.wicket = new NPC('wicket', {
     pos: {},
     sounds: ['wicket.mp3', null, 'wicket-hurt.mp3', 'wicket-hurt.mp3']

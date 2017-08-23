@@ -15,12 +15,10 @@ module.exports = () => {
     let loader = require('../json/loader');
 
     THREE.DefaultLoadingManager.onProgress = (item, loaded, total) => {
-        console.log(`Loading ${item} (${loaded}/${total})`);
         $('#loaded').text(`${Math.floor(loaded/total*100)}% - v.${window.Grove.version}`);
     };
 
     THREE.DefaultLoadingManager.onLoad = () => {
-        console.log('Loading complete');
         if (!$('#instructions').has('h4').length) $('#instructions').html(`
         <h4>${loader[Math.floor(Math.random() * loader.length)]}</h4>
         <button class='play-btn btn waves-effect waves-light light-green z-depth-3'>Play</button>
@@ -81,7 +79,6 @@ module.exports = () => {
             child.castShadow = true;
             child.receiveShadow = true;
             if (child instanceof THREE.Mesh && !/NP/gi.test(child.name)) {
-                console.log(`Loading ${child.name}`);
                 G.get('load')(child); // load the kiddos!
             }
             else if (child.name == 'NP_Ocean') {
