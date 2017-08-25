@@ -642,6 +642,6 @@ export class Player extends Living {
 
     damage(dmg) {
         super.damage(dmg);
-        $('#vignette').fadeIn(550).fadeOut(550);
+        // if (Date.now() - this.lastDamaged < 500) $('#vignette').fadeIn(550).fadeOut(550);
     }
 }

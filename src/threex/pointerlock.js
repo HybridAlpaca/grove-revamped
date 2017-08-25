@@ -30,7 +30,7 @@ var PointerLockControls = module.exports = function(camera, cannonBody) {
     var moveLeft = false;
     var moveRight = false;
 
-    var canJump = false; // white kid
+    var canJump = false;
     var isSprinting = false;
 
     var contactNormal = new CANNON.Vec3(); // Normal in the contact, pointing *out* of whatever the player touched

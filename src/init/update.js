@@ -50,7 +50,15 @@ module.exports = function animate(delta) {
 
 
     if (G.get('player').body.position.y < -100) G.get('player').body.position.set(0, 15, 0);
-    else if (G.get('player').body.position.y < -20) $('#overlay').css('background', 'blue').css('opacity', 0.5).show();
+    else if (G.get('player').body.position.y < -20) {
+        // player's underwater
+        $('#overlay').css('background', 'blue').css('opacity', 0.5).show();
+        G.get('player').stm -= 0.3;
+        if (G.get('player').stm < 0) {
+            G.get('player').stm = 0;
+            G.get('player').damage(0.1);
+        }
+    }
     else $('#overlay').hide();
 
     G.get('controls').update(Date.now() - G.get('time'));

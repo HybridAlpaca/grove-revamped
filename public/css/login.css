@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Bellefair');
 
+@font-face {
+    font-family: Rune;
+    src: url("../fonts/rune/Iokharic.otf") format("opentype");
+}
+
 ::-webkit-input-placeholder {
     color: #777 !important;
 }
@@ -19,6 +24,10 @@ form {
 
 input:not([type=submit]) {
     text-indent: 5px;
+}
+
+.rune {
+    font-family: Rune;
 }
 
 #flipbook {
