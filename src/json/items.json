@@ -31,7 +31,7 @@
         }
     },
     "hpostionmd": {
-        "name": "Average Draught of Health",
+        "name": "Average Draught of Health/",
         "id": "hpotionmd",
         "desc": "A slightly bigger vial of liquid health, tastes slightly of toenail fungus.",
         "path": "/assets/icons/health-potion.png",
@@ -104,6 +104,16 @@
     },
     "whpoison": {
         "name": "Weak Health Poison",
+        "id": "whpoison",
+        "desc": "This poison has no description; simply because it is poisonous.",
+        "type": "poison",
+        "path": "/assets/icons/health-poison.png",
+        "effects": {
+            "hp": -5
+        }
+    },
+    "wspoison": {
+        "name": "Weak Stamina Poison",
         "id": "whpoison",
         "desc": "This poison has no description; simply because it is poisonous.",
         "type": "poison",

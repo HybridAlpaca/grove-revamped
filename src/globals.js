@@ -11,11 +11,15 @@ G.set('tick', 0);
 
 G.set('controls', {});
 G.set('scene', new THREE.Scene());
-G.set('renderer', new THREE.WebGLRenderer());
+G.set('renderer', new THREE.WebGLRenderer({
+    antialias: true
+}));
 G.set('camera', new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 5000));
 
 G.set('listener', new THREE.AudioListener());
 G.get('camera').add(G.get('listener'));
+
+G.set('socket', window.io());
 
 G.set('player', {});
 G.set('entities', []);

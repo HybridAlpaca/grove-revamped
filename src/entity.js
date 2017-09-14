@@ -178,9 +178,9 @@ export class Living extends Entity {
         super.update(delta);
 
         this.heal(
-            Date.now() - this.lastDamaged > 5000 ? 1 / 10 : 0,
-            Date.now() - this.lastUsedStamina > 2000 ? 1 / 10 : 0,
-            Date.now() - this.lastUsedMagic > 2000 ? 1 / 10 : 0
+            Date.now() - this.lastDamaged > 5000 ? 1 / 5 : 0,
+            Date.now() - this.lastUsedStamina > 2000 ? 1 / 5 : 0,
+            Date.now() - this.lastUsedMagic > 2000 ? 1 / 5 : 0
         );
     }
 }
@@ -267,7 +267,11 @@ export class AI extends Living {
 
             this.hostility = hostility;
 
-            let velocity = 1;
+            let velocity = typeof this.dex == 'undefined' ? 1 : this.dex;
+            if (this.dex == 0) {
+                this.body.velocity.x = 0;
+                this.body.velocity.z = 0;
+            }
             if (hostility > 0) velocity *= -1;
 
             if (hostility != 0 && mypos.distanceTo(targetpos) > (hostility > 0 ? 10 : 5)) {
@@ -348,6 +352,7 @@ export class Creature extends AI {
             body.linearDamping = 0.9;
 
             object.traverse((child) => {
+                if (!data.mesh) return;
                 for (let mesh of data.mesh) {
                     if (mesh.name.toLowerCase() == child.name.toLowerCase()) {
                         for (let key in mesh) {
@@ -379,6 +384,7 @@ export class Creature extends AI {
                 if (amount > item.max) amount = item.max;
                 if (!amount) continue;
                 for (let i = 0; i < amount; i++) data.attacker.inv.push(items[item.id]);
+                data.attacker.gainXP(5);
                 if (data.attacker == G.get('player')) {
                     if (amount > 1) Materialize.toast(`${item.id} (${amount}) added`, 1000);
                     else Materialize.toast(`${item.id} added`, 1000);
@@ -599,7 +605,7 @@ export class Player extends Living {
             else
                 contactNormal.copy(contact.ni); // bi is something else. Keep the normal as it is
             if (contactNormal.dot(upAxis) > 0.5 && sphereBody.velocity.y <= -30)
-                this.hp += Math.floor(sphereBody.velocity.y / 5);
+                this.hp += Math.floor(sphereBody.velocity.y * 1.5);
         });
 
         // spawn on ground if possible, otherwise spawn high in the air
@@ -616,9 +622,13 @@ export class Player extends Living {
         super('player', new THREE.Object3D(), sphereBody);
 
         this.poisons = [];
+        this.inv = window.user.character.inv;
 
-        this.lvl = 1;
-        this.xp = 0;
+        this.race = window.user.character.race;
+        this.class = window.user.character.class;
+
+        this.lvl = window.user.character.lvl;
+        this.xp = window.user.character.xp;
 
         this.hp = 100;
         this.hpMax = 100;
@@ -640,8 +650,8 @@ export class Player extends Living {
         this.body.velocity.z *= 0.925;
     }
 
-    damage(dmg) {
-        super.damage(dmg);
-        // if (Date.now() - this.lastDamaged < 500) $('#vignette').fadeIn(550).fadeOut(550);
+    kill(a, b) {
+        super.kill(a, b);
+        alert('U dead son');
     }
 }

@@ -36,6 +36,10 @@ body {
     font-family: rune;
 }
 
+.tippy-popper, .tippy-tooltip {
+    z-index: 9999999999999999999999999999999999999999999999999999999999;
+}
+
 #label {
     position: absolute;
     left: 40.2%;
@@ -117,16 +121,19 @@ body {
     position: absolute;
     left: 40%;
 }
+
 #menu-options {
     position: absolute;
     left: 42%;
     top: 72%;
 }
+
 #menu-magic {
     position: absolute;
     left: 17.5%;
     top: 50%;
 }
+
 #menu-inv {
     position: absolute;
     left: 68%;
@@ -213,4 +220,10 @@ body {
     left: 20%;
     top: 15%;
     z-index: 999999999999999999999999999999999999;
+}
+
+#credits {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
 }

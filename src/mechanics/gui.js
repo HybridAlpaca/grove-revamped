@@ -1,7 +1,8 @@
 "use strict";
 
 const G = require('globals'),
-    $ = require('jquery');
+    $ = require('jquery'),
+    tippy = require('../threex/tippy.min.js');
 
 export default class GUI {
     constructor(title, content) {
@@ -38,7 +39,7 @@ export class Character {
     constructor() {
 
         new GUI(window.Grove.username || 'Character', '<p>TODO</p>');
-        
+
     }
 }
 
@@ -48,12 +49,22 @@ export class Inventory {
         let div = $('<div>');
         for (let item of data) {
             (function() {
+                let template = $('<div>');
                 let img = $('<img>')
+                    .addClass('inv-item')
                     .attr('src', item.path)
                     .attr('title', item.name)
                     .attr('width', 50)
                     .data('item', item)
                     .appendTo(div)
+                template.html(`<b>${item.name}</b><br><hr><i>${item.desc}</i>`);
+                let tip = new tippy(img[0], {
+                    position: 'bottom',
+                    html: template[0]
+                });
+                let popper = tip.getPopperElement(img[0]);
+                popper.style.zIndex = 999999999999;
+                popper.style.maxWidth = '150px';
             })();
         }
         div.on('click', 'img', function() {
@@ -91,7 +102,7 @@ export class Magic {
     constructor() {
 
         new GUI('Menu', '<p>TODO</p>');
-        
+
     }
 }
 

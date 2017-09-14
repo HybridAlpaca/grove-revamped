@@ -12,7 +12,12 @@ function weapon (name, type, damage) {
     function weapon = {
         this.
     }
-    ugh */
+    ugh 
+    
+    why is this still here?!
+    
+    */
+    
     this.name = name;
     this.type = type;
     this.damage = damage;

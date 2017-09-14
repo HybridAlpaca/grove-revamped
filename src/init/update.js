@@ -56,7 +56,7 @@ module.exports = function animate(delta) {
         G.get('player').stm -= 0.3;
         if (G.get('player').stm < 0) {
             G.get('player').stm = 0;
-            G.get('player').damage(0.1);
+            G.get('player').damage(1);
         }
     }
     else $('#overlay').hide();

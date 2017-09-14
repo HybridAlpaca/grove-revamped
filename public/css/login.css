@@ -96,6 +96,12 @@ input:not([type=submit]) {
     background-size: 400px 600px;
 }
 
+#credits {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
 @-webkit-keyframes autofill {
     to {
         color: black;

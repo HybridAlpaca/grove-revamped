@@ -5,7 +5,15 @@ module.exports = (mongoose, app) => {
     let db = mongoose.connection;
     let User = mongoose.model('User', {
         username: String,
-        password: String
+        password: String,
+        map: String,
+        character: {
+            race: String,
+            'class': String,
+            lvl: Number,
+            xp: Number,
+            inv: Array
+        }
     });
 
     db.on('error', console.error);
@@ -46,6 +54,14 @@ module.exports = (mongoose, app) => {
                 let u = new User({
                     username: req.body.username,
                     password: require('md5')(req.body.password),
+                    map: 'skjar-isles',
+                    character: {
+                        race: 'human',
+                        'class': 'noob',
+                        lvl: 1,
+                        xp: 0,
+                        inv: []
+                    }
                 });
                 u.save((err, obj) => {
                     if (err) console.error(err);

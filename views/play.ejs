@@ -5,6 +5,7 @@
     <title>The Grove | Play</title>
     <link rel='icon' href='/assets/icons/tree.png'>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <link rel='stylesheet' href='/css/tippy.min.css'>
     <link rel='stylesheet' href='/css/play.css'>
 </head>
 
@@ -29,7 +30,9 @@
             <object data="/assets/img/loading.svg" type="image/svg+xml"></object>
             <br>
             <p id='loaded'>[ loading ]</p>
+            <p id='credits'>© 2017 HybridAlpaca Game Studios</p>
         </div>
+        
     </div>
 
     <div id='overlay' style='display:none;'></div>
@@ -63,7 +66,8 @@
     <img id='quests' src='/assets/icons/stabbed-note.png' width=50>
 
     <div id='hud'>
-        <canvas id='hud-canvas' width='578' height='200'>Your browser doesn't support the HTML5 Canvas API. ( Use Chrome! )</canvas>
+        <canvas id='hud-canvas' width='578' height='200'>Your browser doesn't support the HTML5 Canvas API. (Use Chrome!)</canvas>
+        <canvas id='hud-canvas' width='578' height='200'>Your browser doesn't support the HTML5 Pointerlock API. (Use Chrome!)</canvas>
     </div>
 
     <script src="//code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
@@ -72,10 +76,9 @@
 
     <script>
     
-        var Grove = {
-            username: '<%= user.username %>',
-            password: '<%= user.password %>' // it's encrypted ;)
-        };
+        var Grove = {};
+        
+        var user = <%- JSON.stringify(user) %>
     
         window.console.__error = window.console.error;
         window.console.__warn = window.console.warn;
@@ -84,7 +87,9 @@
                 console.__error(out);
         };
         window.console.warn = function(out) {
-            if (!/^\.vertices\[/.test(out))
+            if (!/^\.vertices\[/.test(out)
+            && !/extension not supported/.test(out)
+            && !/image is not power of two/.test(out))
                 console.__warn(out);
         };
         

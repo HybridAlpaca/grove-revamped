@@ -21,9 +21,16 @@ app.use(session({
     name: 'TG_USR_SESSION',
     secure: false
 }));
-require('./mongo')(mongoose, app);
 
-app.get('/', (req, res) => res.render(path.resolve(__dirname, '../', 'views', req.session.user ? 'dashboard.ejs' : 'index.ejs')));
+require('./mongo')(mongoose, app);
+require('./interact')(io);
+
+app.get('/', (req, res) => {
+    if(req.session.user) res.render(path.resolve(__dirname, '../', 'views', 'dashboard.ejs'), {
+        user: req.session.user
+    });
+    else res.render(path.resolve(__dirname, '../', 'views', 'index.ejs'));
+});
 app.get('/logout', (req, res) => {
     req.session.user ? delete req.session.user : null;
     res.redirect('/');

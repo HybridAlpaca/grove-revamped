@@ -1,6 +1,6 @@
 {
     "slime": {
-        "name": "Slime",
+        "name": "Green Slime",
         "path": "slime/slime",
         "id": "slime",
         "stats": {
@@ -87,5 +87,23 @@
             "name": "inner",
             "color": 255
         }]
+    },
+    "gooshroom": {
+        "name": "Gooshroom",
+        "path": "gooshroom/gooshroom",
+        "id": "gooshroom",
+        "stats": {
+            "hp": 25,
+            "hpMax": 25,
+            "dmg": 7,
+            "dex": 0,
+            "spd": 0
+        },
+        "hostility": [
+            ["wicket", "player", "slime", "slime.red", "slime.blue"],
+            ["gooshroom"],
+            []
+        ],
+        "inv": []
     }
 }

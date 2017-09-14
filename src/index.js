@@ -31,7 +31,7 @@ let NPC = require('./entity').NPC;
 
 new HUD();
 
-window.onerror = alert; // use only in dev
+window.onerror = alert; // use only in development
 
 window.Grove.version = '1.3.7';
 window.Grove.globals = require('globals');
