@@ -1,0 +1,299 @@
+WD /Scripts/
+2017-09-14 11:43:14,499 DEBUG pool-4-thread-7 GFtpServerFactory    - Changing wo
+rking directory from 'FtpFileWrapper [absolutePath=/Scripts]' to '/Scripts'...
+2017-09-14 11:43:14,499 DEBUG pool-4-thread-7 GFtpServerFactory    - Changing wo
+rking directory to absolute path '/Scripts'...
+2017-09-14 11:43:14,499 DEBUG pool-4-thread-7 GFtpServerFactory    - Requested f
+ile is the current dir 'FtpFileWrapper [absolutePath=/Scripts]'
+2017-09-14 11:43:14,499 INFO  pool-4-thread-8 FtpLoggingFilter     - SENT: 250 D
+irectory changed to /Scripts
+
+2017-09-14 11:43:14,499 INFO  pool-4-thread-8 FtpLoggingFilter     - RECEIVED: T
+YPE A
+2017-09-14 11:43:14,499 INFO  pool-4-thread-9 FtpLoggingFilter     - SENT: 200 C
+ommand TYPE okay.
+
+2017-09-14 11:43:14,499 INFO  pool-4-thread-9 FtpLoggingFilter     - RECEIVED: P
+ASV
+2017-09-14 11:43:14,499 INFO  pool-4-thread-7 FtpLoggingFilter     - SENT: 227 E
+ntering Passive Mode (127,0,0,1,222,17)
+
+2017-09-14 11:43:14,499 INFO  pool-4-thread-7 FtpLoggingFilter     - RECEIVED: L
+IST
+2017-09-14 11:43:14,499 DEBUG pool-4-thread-7 GFtpServerFactory    - Getting fil
+e './'...
+2017-09-14 11:43:14,499 DEBUG pool-4-thread-7 GFtpServerFactory    - Getting fil
+e './'...
+2017-09-14 11:43:14,499 INFO  pool-4-thread-7 GFtpServerFactory    - Listing /Sc
+ripts
+
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/GPP
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/NIC
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/StudentLogonScripts
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/DisableSafeBoot.bat
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/dsellers.vbs
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/LogIn_Icons.vbs
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/logoff.vbe
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/logoff-del.vbe
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/logon.vbe
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/LogonAdultEd.vbs
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/LogonAttendance.vbs
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/logon-del.vbe
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/LogonStaff.vbs
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/LogonStudent.vbs
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/LogonStudentPeachtree.vbs
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/Office2007extfix.vbs
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/OrigLogonStudent.vbs
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/PearsonVueDriveMapping.vbs
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/printassign.vbe
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/printassignInteractiveFix.vbe
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/printassign-nochangedPref.vbe
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/printassign-no-ps.vbe
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/RedRibbonWeek2013.vbs
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/RemovePostConfigDrive.vbs
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/SpdDplx.ini
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/StartupComputer.vbs
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/TabletErrorSuppressList.vbs
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/TabletErrorSuppressListUser.vbs
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/time.bat
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/wmifix.vbs
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/7RemoveNetworkedPrinters.vbs
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/7RemoveNetworkedPrinters-old.vbs
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/Copy of SpdDplx.ini
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/defaultdetect.vbe
+2017-09-14 11:43:14,530 DEBUG pool-4-thread-7 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/deleteAutoDeskShortcuts.vbs
+2017-09-14 11:43:14,530 WARN  pool-4-thread-7 PassivePorts         - Releasing u
+nreserved passive port: 56849
+2017-09-14 11:43:14,530 INFO  pool-4-thread-7 FtpLoggingFilter     - SENT: 150 F
+ile status okay; about to open data connection.
+
+2017-09-14 11:43:14,530 INFO  pool-4-thread-7 FtpLoggingFilter     - SENT: 226 C
+losing data connection.
+
+2017-09-14 11:43:14,530 INFO  pool-4-thread-7 FtpLoggingFilter     - RECEIVED: n
+oop
+2017-09-14 11:43:14,546 INFO  pool-4-thread-8 FtpLoggingFilter     - SENT: 200 C
+ommand NOOP okay.
+
+2017-09-14 11:43:14,546 INFO  pool-4-thread-8 FtpLoggingFilter     - RECEIVED: C
+WD /Scripts/
+2017-09-14 11:43:14,546 DEBUG pool-4-thread-8 GFtpServerFactory    - Changing wo
+rking directory from 'FtpFileWrapper [absolutePath=/Scripts]' to '/Scripts'...
+2017-09-14 11:43:14,546 DEBUG pool-4-thread-8 GFtpServerFactory    - Changing wo
+rking directory to absolute path '/Scripts'...
+2017-09-14 11:43:14,546 DEBUG pool-4-thread-8 GFtpServerFactory    - Requested f
+ile is the current dir 'FtpFileWrapper [absolutePath=/Scripts]'
+2017-09-14 11:43:14,546 INFO  pool-4-thread-9 FtpLoggingFilter     - SENT: 250 D
+irectory changed to /Scripts
+
+2017-09-14 11:43:14,546 INFO  pool-4-thread-7 FtpLoggingFilter     - RECEIVED: T
+YPE I
+2017-09-14 11:43:14,546 INFO  pool-4-thread-8 FtpLoggingFilter     - SENT: 200 C
+ommand TYPE okay.
+
+2017-09-14 11:43:14,546 INFO  pool-4-thread-8 FtpLoggingFilter     - RECEIVED: P
+ASV
+2017-09-14 11:43:14,546 INFO  pool-4-thread-9 FtpLoggingFilter     - SENT: 227 E
+ntering Passive Mode (127,0,0,1,222,19)
+
+2017-09-14 11:43:14,546 INFO  pool-4-thread-9 FtpLoggingFilter     - RECEIVED: S
+TOR DeleteMsword6wpcRegKey.vbs
+2017-09-14 11:43:14,546 DEBUG pool-4-thread-9 GFtpServerFactory    - Getting fil
+e 'DeleteMsword6wpcRegKey.vbs'...
+2017-09-14 11:43:14,546 DEBUG pool-4-thread-9 GFtpServerFactory    - Querying fo
+r file '/Scripts/DeleteMsword6wpcRegKey.vbs' inside folder 'FtpFileWrapper [abso
+lutePath=/Scripts]'...
+2017-09-14 11:43:14,546 DEBUG pool-4-thread-9 GFtpServerFactory    - File 'Delet
+eMsword6wpcRegKey.vbs' doesn't exist!
+2017-09-14 11:43:14,546 DEBUG pool-4-thread-9 GFtpServerFactory    - Creating fi
+le wrapper /Scripts/DeleteMsword6wpcRegKey.vbs
+2017-09-14 11:43:14,562 INFO  pool-4-thread-9 GoogleDrive          - Uploading f
+ile 'C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-3428349232024954002.uploa
+d.DeleteMsword6wpcRegKey.vbs'...
+2017-09-14 11:43:14,718 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-6784810261038089408.upload.pro
+mVenue2016.vbe'...
+2017-09-14 11:43:15,420 INFO  pool-4-thread-9 GoogleDrive          - File create
+d DeleteMsword6wpcRegKey.vbs (0Bz6OBAOdgC3YLW9yVUhxOWhjb3c)
+2017-09-14 11:43:15,420 INFO  pool-4-thread-9 FtpGdriveSynchService - Synching 0
+Bz6OBAOdgC3YLW9yVUhxOWhjb3c...
+2017-09-14 11:43:15,607 INFO  pool-4-thread-9 STOR                 - File upload
+ed /Scripts/DeleteMsword6wpcRegKey.vbs
+2017-09-14 11:43:15,607 INFO  pool-4-thread-9 GoogleDrive          - Uploading f
+ile 'C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-3428349232024954002.uploa
+d.DeleteMsword6wpcRegKey.vbs'...
+2017-09-14 11:43:15,950 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-6784810261038089408.upload.pro
+mVenue2016.vbe'...
+2017-09-14 11:43:16,808 INFO  pool-4-thread-9 GoogleDrive          - Uploading f
+ile 'C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-3428349232024954002.uploa
+d.DeleteMsword6wpcRegKey.vbs'...
+2017-09-14 11:43:17,136 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-6784810261038089408.upload.pro
+mVenue2016.vbe'...
+2017-09-14 11:43:17,276 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-2925617950204189815.upload.Pro
+m2016-RND2.vbe'...
+2017-09-14 11:43:17,947 INFO  pool-4-thread-9 GoogleDrive          - Uploading f
+ile 'C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-3428349232024954002.uploa
+d.DeleteMsword6wpcRegKey.vbs'...
+2017-09-14 11:43:18,446 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-2925617950204189815.upload.Pro
+m2016-RND2.vbe'...
+2017-09-14 11:43:19,132 INFO  pool-4-thread-9 GoogleDrive          - Uploading f
+ile 'C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-3428349232024954002.uploa
+d.DeleteMsword6wpcRegKey.vbs'...
+2017-09-14 11:43:19,320 WARN  pool-4-thread-9 PassivePorts         - Releasing u
+nreserved passive port: 56851
+2017-09-14 11:43:19,320 INFO  pool-4-thread-9 FtpLoggingFilter     - SENT: 150 F
+ile status okay; about to open data connection.
+
+2017-09-14 11:43:19,320 INFO  pool-4-thread-9 FtpLoggingFilter     - SENT: 226 T
+ransfer complete.
+
+2017-09-14 11:43:19,507 INFO  Timer-0    FtpGdriveSynchService - Detected 2 chan
+ges
+2017-09-14 11:43:19,507 INFO  Timer-0    FtpGdriveSynchService - Updating file D
+iffs: lastViewedByMeDate '1505407389807'
+2017-09-14 11:43:19,522 INFO  Timer-0    FtpGdriveSynchService - Updating file D
+iffs: lastViewedByMeDate '1505407394801'
+2017-09-14 11:43:19,538 INFO  Timer-0    FtpGdriveSynchService - Largest changeI
+d found in local database 269159
+2017-09-14 11:43:19,632 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-2925617950204189815.upload.Pro
+m2016-RND2.vbe'...
+2017-09-14 11:43:20,802 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-2925617950204189815.upload.Pro
+m2016-RND2.vbe'...
+2017-09-14 11:43:20,958 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-5648528177798129412.upload.Pro
+m2016-RND1.vbe'...
+2017-09-14 11:43:22,174 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-5648528177798129412.upload.Pro
+m2016-RND1.vbe'...
+2017-09-14 11:43:23,329 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-5648528177798129412.upload.Pro
+m2016-RND1.vbe'...
+2017-09-14 11:43:24,639 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-5648528177798129412.upload.Pro
+m2016-RND1.vbe'...
+2017-09-14 11:43:24,779 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-261776152893876655.upload.HWN-
+FoodDrive.vbs'...
+2017-09-14 11:43:25,996 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-261776152893876655.upload.HWN-
+FoodDrive.vbs'...
+2017-09-14 11:43:27,186 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-261776152893876655.upload.HWN-
+FoodDrive.vbs'...
+2017-09-14 11:43:28,352 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-261776152893876655.upload.HWN-
+FoodDrive.vbs'...
+2017-09-14 11:43:28,460 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-391415851680006420.upload.Home
+coming2017.vbe'...
+2017-09-14 11:43:29,627 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-391415851680006420.upload.Home
+coming2017.vbe'...
+2017-09-14 11:43:30,750 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-391415851680006420.upload.Home
+coming2017.vbe'...
+2017-09-14 11:43:31,877 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-391415851680006420.upload.Home
+coming2017.vbe'...
+2017-09-14 11:43:32,025 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-4878086493344643908.upload.Hom
+ecoming2017-RND2.vbe'...
+2017-09-14 11:43:33,151 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-4878086493344643908.upload.Hom
+ecoming2017-RND2.vbe'...
+2017-09-14 11:43:34,278 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-4878086493344643908.upload.Hom
+ecoming2017-RND2.vbe'...
+2017-09-14 11:43:35,407 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-4878086493344643908.upload.Hom
+ecoming2017-RND2.vbe'...
+2017-09-14 11:47:36,375 INFO  pool-4-thread-10 FtpLoggingFilter     - CLOSED
+2017-09-14 11:49:49,401 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-3428349232024954002.upload.Del
+eteMsword6wpcRegKey.vbs'...
+2017-09-14 11:49:50,557 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-3428349232024954002.upload.Del
+eteMsword6wpcRegKey.vbs'...
+2017-09-14 11:49:51,662 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-3428349232024954002.upload.Del
+eteMsword6wpcRegKey.vbs'...
+2017-09-14 11:49:52,758 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-3428349232024954002.upload.Del
+eteMsword6wpcRegKey.vbs'...
+2017-09-14 11:49:52,915 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-7307772679079138339.upload.del
+eteAutoDeskShortcuts.vbs'...
+2017-09-14 11:49:54,070 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-7307772679079138339.upload.del
+eteAutoDeskShortcuts.vbs'...
+2017-09-14 11:49:55,259 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-7307772679079138339.upload.del
+eteAutoDeskShortcuts.vbs'...
+2017-09-14 11:49:56,406 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-7307772679079138339.upload.del
+eteAutoDeskShortcuts.vbs'...
+2017-09-14 11:49:56,593 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-4817870908556431299.upload.def
+aultdetect.vbe'...
+2017-09-14 11:49:57,769 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-4817870908556431299.upload.def
+aultdetect.vbe'...
+2017-09-14 11:49:58,886 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-4817870908556431299.upload.def
+aultdetect.vbe'...
+2017-09-14 11:50:00,032 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-4817870908556431299.upload.def
+aultdetect.vbe'...
+2017-09-14 11:50:00,150 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-6931225714146178724.upload.Cop
+y of SpdDplx.ini'...
+2017-09-14 11:50:01,279 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-6931225714146178724.upload.Cop
+y of SpdDplx.ini'...
+2017-09-14 11:50:02,442 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-6931225714146178724.upload.Cop
+y of SpdDplx.ini'...
+2017-09-14 11:50:03,625 INFO  Finalizer  GoogleDrive          - Uploading file '
+C:\Users\GOL504~1\AppData\Local\Temp\gdrive-synch-6931225714146178724.upload.Cop
+y of SpdDplx.ini'...

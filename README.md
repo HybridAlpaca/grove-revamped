@@ -31,8 +31,8 @@ The Team
 -
 
 - Seth Traman <img src="/public/assets/img/team/seth.gif" width=30>
-- Casimir Kash
 - Nate Goldsborough
+- Casimir Kash
 - Hunter Sokolis
 - Michael Rimmile
 - 

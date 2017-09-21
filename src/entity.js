@@ -139,7 +139,7 @@ export class Living extends Entity {
 
     attack(entity) {
         if (!G.get('controls').enabled) return;
-        entity.damage(this.dmg, this);
+        entity.damage(Math.interval(this.dmg - 0.2 * this.dmg, this.dmg + 0.2 * this.dmg), this);
         this.lastAttacked = Date.now();
         this.callEvent('attack');
     }
@@ -620,6 +620,8 @@ export class Player extends Living {
             sphereBody.position.set(200, 2, 0);
 
         super('player', new THREE.Object3D(), sphereBody);
+        
+        this.addEventListener('levelUp', () => Materialize.toast('Level up!'));
 
         this.poisons = [];
         this.inv = window.user.character.inv;
