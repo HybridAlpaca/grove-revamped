@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Bellefair');
+
+@font-face {
+    font-family: Rune;
+    src: url("../fonts/rune/Iokharic.otf") format("opentype");
+}
+
+::-webkit-input-placeholder {
+    color: #777 !important;
+}
+form {
+    line-height: 20px;
+}
+
+input:not([type=submit]) {
+    text-indent: 5px;
+}
+
+.rune {
+    font-family: Rune;
+}
+
+#credits {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+@-webkit-keyframes autofill {
+    to {
+        color: black;
+        background: transparent;
+    }
+}
+
+input:-webkit-autofill {
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+}

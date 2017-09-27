@@ -44,6 +44,7 @@ app.get('/play', (req, res) => {
     });
 });
 app.get('/login', (req, res) => res.render(path.resolve(__dirname, '../', 'views', 'login.ejs')));
+app.get('/login-weebly', (req, res) => res.render(path.resolve(__dirname, '../', 'views', 'login-weebly.ejs')));
 app.get('/register', (req, res) => res.render(path.resolve(__dirname, '../', 'views', 'register.ejs')));
 
 app.get('/register', (req, res) => {

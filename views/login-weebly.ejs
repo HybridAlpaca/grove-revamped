@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <link rel='stylesheet' href='https://play.grove-mmo.com/css/login-weebly.css'>
+</head>
+
+<style>
+        body {
+            background-color: #888d99  ;
+        }
+        h1 {
+            color: white;
+            margin: 150px;
+            font-size: 60px;
+        }
+        
+        h3 {
+            color: white;
+            margin: 130px;
+            font-size: 30px;
+        }
+        h2 {
+            color: white;
+        }
+        button {
+            margin-left: 150px;
+            margin-top: -100px;
+            padding: 15px 30px !important;
+        }
+        .back-btn {
+            color: white;
+            text-decoration: none;
+            background: #66bb6a;
+            padding: 20px;
+            border-radius: 7.5px;
+            font-size: 17px;
+        }
+    </style>
+
+      <form method='post' action='https://play.grove-mmo.com/login' style='margin: 50px'>
+        <br><br><br><br><br><br><br><br>
+        <input name='username' placeholder='Username' type='text' class='validate'>
+        <input name='password' placeholder='Password' type='password'>
+        <input type='submit' class='waves-effect waves-light btn-large red z-depth-3' value='Login'>
+      </form>
+    </div>
+ 
+ 
+ <!--
+    
+<body>
+    <%- include book %>
+        <script src='//code.jquery.com/jquery-1.7.2.min.js'></script>
+        <script src='https://play.grove-mmo.com/js/vendor/turn.min.js'></script>
+        <script type="text/javascript">
+            $("#flipbook").turn({
+                width: 800,
+                height: 600,
+                autoCenter: true
+            });
+            $("#flipbook").bind("turned", function(event, page, view) {
+                if (page == 1) {
+                    history.pushState(null, 'home', '/');
+                    document.title = 'The Grove';
+                }
+                if (page == 2 || page == 3) {
+                    history.pushState(null, 'about', '/about');
+                    document.title = 'The Grove | About';
+                }
+                if (page == 4 || page == 5) {
+                    history.pushState(null, 'login', '/login-weebly');
+                    document.title = 'The Grove | Login';
+                }
+                if (page == 6) {
+                    history.pushState(null, 'register', '/register');
+                    document.title = 'The Grove | Register';
+                }
+            });
+            $(document).ready(function() {
+                $("#flipbook").turn('next');
+                setTimeout(function() {
+                    $("#flipbook").turn('next');
+                }, 500);
+            });
+
+            $("#flipbook").click(function(e) {
+                if ($('input:focus').length) return;
+                var pWidth = $(this).innerWidth(); //use .outerWidth() if you want borders
+                var pOffset = $(this).offset();
+                var x = e.pageX - pOffset.left;
+                if (pWidth / 2 > x)
+                    $(this).turn('previous'); // left
+                else
+                    $(this).turn('next'); // right
+            });
+        </script>
+ 
+ -->
+ 
+ 
+</body>
