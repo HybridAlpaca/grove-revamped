@@ -7,6 +7,7 @@ module.exports = (mongoose, app) => {
         username: String,
         password: String,
         map: String,
+        email: String,
         character: {
             race: String,
             'class': String,
@@ -36,19 +37,19 @@ module.exports = (mongoose, app) => {
                 res.redirect('/');
             }
             else {
-                res.redirect('/login?err=user_not_found');
+                res.redirect('https://grove-mmo.com/login');
             }
         });
     });
 
     app.post('/register', (req, res) => {
-        if (req.body.password !== req.body.confPassword) return res.redirect('/register?err=passwords_no_match');
+        if (req.body.password !== req.body.confPassword) return res.redirect('https://grove-mmo.com/register');
         User.findOne({
             username: req.body.username
         }, (err, obj) => {
             if (err) console.error(err);
             else if (obj) {
-                res.redirect('/register?err=user_exists');
+                res.redirect('https://grove-mmo.com/register');
             }
             else {
                 let u = new User({

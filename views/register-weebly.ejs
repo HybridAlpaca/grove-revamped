@@ -1,5 +1,3 @@
-<!doctype html>
-<html>
 
 <style>
 
@@ -8545,9 +8543,10 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 }
 </style>
 
-      <form method='post' action='https://play.grove-mmo.com/login' style='margin: 50px'>
-        <input name='username' placeholder='Username' type='text' class='validate'>
-        <input name='password' placeholder='Password' type='password'>
-        <input type='submit' class='waves-effect waves-light btn-large blue z-depth-3' value='Login'>
+<form method='post' action='/register' style='margin: 50px'>
+        <input name='username' placeholder='Username' class='form-control'>
+        <input name='email' placeholder='Email' class='form-control'>
+        <input name='password' placeholder='Password' type='password' class='form-control'>
+        <input name='confPassword' placeholder='Confirm Password' type='password' class='form-control'>
+        <input type='submit' class='btn btn-primary' value='Register'>
       </form>
-
