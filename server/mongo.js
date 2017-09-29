@@ -55,6 +55,7 @@ module.exports = (mongoose, app) => {
                 let u = new User({
                     username: req.body.username,
                     password: require('md5')(req.body.password),
+                    email: req.body.email,
                     map: 'skjar-isles',
                     character: {
                         race: 'human',
