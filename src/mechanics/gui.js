@@ -177,13 +177,9 @@ export class HUD {
         this.ctx.stroke();
 
 
+
         // XP BAR
-        let grd = this.ctx.createLinearGradient(0, 0, (G.get('player').xp / G.get('player').xpMax) * this.canvas.width, 0);
-        grd.addColorStop(0, "darkgreen");
-        grd.addColorStop(0.75, "darkgreen");
-        grd.addColorStop(0.95, "lime");
-        grd.addColorStop(1, "lime");
-        this.ctx.fillStyle = grd;
+        this.ctx.fillStyle = "#00ff00";
         this.ctx.fillRect(0, this.canvas.height - 10, (G.get('player').xp / G.get('player').xpMax) * this.canvas.width, 10);
 
 
