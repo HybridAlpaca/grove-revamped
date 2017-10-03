@@ -1,5 +1,3 @@
-// Potions mothafucka, too bad theres no "Make Nancy Go Out With Seth" potion
-
 var globals /* or G for short */ = require('globals');
 
 var player = globals.get('player'),
@@ -7,7 +5,6 @@ items = require('./json/items');
 
 // HEALTH POTIONS
 
-// Small.. TITSSSSSSSS
 var HPotionSM = 0;
 for (var i = 0; i < 0; i++) {
  player.inv.push({
@@ -20,27 +17,23 @@ for (var i = 0; i < 0; i++) {
    }
 }); }
 
-// Medium.. NOSEEEEEEE
 var HPotionMD = 0;
 
 /* player.inv.push({
    name: "Medium Draught of Health" ,
    id: "hpotionmd",
    path: "/assets/icons/health-potion.png",
-   desc: "cuz fuck it",
    effects: {
        "hp": 10
    }
 }); */
 
-// Large.. DICKKKKKK
 var HPotionLG = 1;
 
 /* player.inv.push({
    name: "Large Draught of Health" ,
    id: "hpotionlg",
    path: "/assets/icons/health-potion.png",
-   desc: "cuz fuck it",
    effects: {
        "hp": 15
    }
@@ -65,42 +58,38 @@ var UseHPotionLG = function(HPLG) {
 };
 
 
-// STAMINA POTIONS, Argh Fuckkkk
+// STAMINA POTIONS
 
-// Small 
 var SPotionSM = 1;
 
 /* player.inv.push({
    name: "Small Draught of Stamina" ,
    id: "spotionsm",
    path: "/assets/icons/stamina-potion.png",
-   desc: "cuz fuck it all",
    effects: {
        "stm": 5
    }
 }); */
 
-// Medium... OrAnGe ShIt
+
 var SPotionMD = 0;
 
 /* player.inv.push({
    name: "Medium Draught of Stamina" ,
    id: "spotionmd", 
    path: "/assets/icons/stamina-potion.png",
-   desc: "cuz fuck it all",
    effects: {
        "stm": 10
    } 
 }); */
 
-// Large... Hunter Noooooooises
+
 var SPotionLG = 0;
 
 /* player.inv.push({
    name: "Large Draught of Stamina" ,
    id: "spotionlg", 
    path: "/assets/icons/stamina-potion.png",
-   desc: "cuz fuck it all",
    effects: {
        "stm": 15
    } 
@@ -127,40 +116,34 @@ var UseSTPotionLG = function(STLG) {
 
 // MAGIC POTIONS
 
-// Small... like Nancy's love for Seth, wait, that would be non-existent, oops
 var MPotionSM = 0;
 
 /* player.inv.push({
    name: "Small Draught of Magic" ,
    id: "mpotionsm", 
    path: "/assets/icons/mana-potion.png",
-   desc: "cuz fuck it all",
    effects: {
        "mp": 5  
    } 
 }); */
 
-// Medium 
 var MPotionMD = 0;
 
 /* player.inv.push({
    name: "Medium Draught of Magic" ,
    id: "mpotionmd", 
    path: "/assets/icons/magic-potion.png",
-   desc: "cuz fuck it all",
    effects: {
        "mp": 10
    } 
 }); */
 
-// Large... FRAPPLE ZAPPLE
 var MPotionLG = 0;
 
 /* player.inv.push({
    name: "Large Draught of Magic" ,
    id: "mpotionlg", 
    path: "/assets/icons/magic-potion.png",
-   desc: "cuz fuck it all",
    effects: {
        "mp": 15
    } 
@@ -185,7 +168,7 @@ var UseMAPotionLG = function (MALG) {
 };
 
 
-// POISONS, AND THERE ARE A HELLA LOT OF THEM
+// POISONS
 
 var weakHPPoison = 0; // Weak Health Poison - Damages Health, 5 points of DMG, lasts 5 seconds
 
@@ -219,17 +202,16 @@ var wolfsBane = 0; // A poison that does a moderate amount of HP damage, why is 
 
 var cyanide = 0; // Because of course there needs to be SOME modern poisons - 30 points of DMG
 
-var arsenic = 0; // Fuck it, why not - 30 points of DMG
+var arsenic = 0; // Why not - 30 points of DMG
 
-var hellaStrongAFGodPoison = 0; // Hell yeah, bitch! This is pretty fuckin' rare, and it does a shit ton of damage to health, stamina and magic.
-// 100,000,000,000 points of DMG cause fuck yeah!
+var hellaStrongAFGodPoison = 0;
+// 100,000,000,000 points of DMG
 /* for (var i = 0; i < 5; i++) {
     player.inv.push({
-   name: "Hella Strong As Fuck God Poison" ,
+   name: "Hella Strong Poison" ,
    id: "hsafgpoison", 
    path: "/assets/icons/health-poison.png",
    type: "poison", // set it's type to poison for future use
-   desc: "cuz fuck it all",
    effects: {
        "hp": -100000000000
    } 

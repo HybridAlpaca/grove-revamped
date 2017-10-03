@@ -15,10 +15,6 @@
  *  X map
  *  X crafting
  * 
- * NOTES:
- * ??/??/16 - RIP Jason, deleted in code
- * 05/23/17 - KJ forgot how to write a function
- * 05/24/17 - Billy the Blue Cube is a f*cking murderer
  * */
 
 

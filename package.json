@@ -16,7 +16,7 @@
     "debug": "DEBUG=* node ."
   },
   "name": "Grove",
-  "version": "1.3.7",
+  "version": "1.4.1",
   "description": "The Grove",
   "main": "server/index.js",
   "repository": "https://github.com/HybridAlpaca/grove-revamped",

@@ -7,17 +7,6 @@ var player = G.get('player');
 player.inventory = player.inventory || [];
 
 function weapon (name, type, damage) {
-    // this marks the time when KJ Avakian forgot how to define a function correctly. It was a very sad, sad day, and we hope it never happens. EVER
-    /* this is what he wrote:
-    function weapon = {
-        this.
-    }
-    ugh 
-    
-    why is this still here?!
-    
-    */
-    
     this.name = name;
     this.type = type;
     this.damage = damage;
