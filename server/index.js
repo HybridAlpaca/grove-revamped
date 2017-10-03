@@ -35,7 +35,7 @@ app.get('/logout', (req, res) => {
     req.session.user ? delete req.session.user : null;
     res.redirect('https://www.grove-mmo.com/');
 });
-app.get('/about', (req, res) => res.render(path.resolve(__dirname, '../', 'views', 'about.ejs')));
+app.get('/about', (req, res) => res.redirect('https://www.grove-mmo.com/about.html'));
 app.get('/pwreset', (req, res) => res.render(path.resolve(__dirname, '../', 'views', 'pwreset.ejs')));
 app.get('/settings', (req, res) => res.render(path.resolve(__dirname, '../', 'views', 'settings.ejs')));
 app.get('/play', (req, res) => {
@@ -43,15 +43,10 @@ app.get('/play', (req, res) => {
         user: req.session.user
     });
 });
-app.get('/login', (req, res) => res.render(path.resolve(__dirname, '../', 'views', 'login.ejs')));
-app.get('/login', (req, res) => res.render(path.resolve(__dirname, '../', 'views', 'login-weebly.ejs')));
-app.get('/register', (req, res) => res.render(path.resolve(__dirname, '../', 'views', 'register.ejs')));
+app.get('/login', (req, res) => res.redirect('https://www.grove-mmo.com/login.html'));
+app.get('/register', (req, res) => res.redirect('https://www.grove-mmo.com/register.html'));
 
-app.get('/register', (req, res) => {
-    res.render('../views/register.ejs');
-    console.log(new Date() + 'Register Activated.');
-});
 http.listen(process.env.PORT || 8080, (listening) => {
     if (!process.env.NODE_ENV)
-        console.log('Listening For conections on 0.0.0.0');
+        console.log('Listening For conections on port 8080');
 });
