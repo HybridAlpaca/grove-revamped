@@ -196,6 +196,6 @@ window.addEventListener('keypress', (e) => {
         new Menu();
 });
 
-$(document).keyup((e) => {
-    if (e.key.toLowerCase() == 'escape') $('#pause').show();
+$(document).keyup('keypress', (e) => {
+    if (e.keyCode == 81) $('#pause').show();
 });

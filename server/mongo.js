@@ -37,19 +37,19 @@ module.exports = (mongoose, app) => {
                 res.redirect('/');
             }
             else {
-                res.redirect('https://grove-mmo.com/login');
+                res.redirect('https://grove-mmo.com/login_err-user-not-exist');
             }
         });
     });
 
     app.post('/register', (req, res) => {
-        if (req.body.password !== req.body.confPassword) return res.redirect('https://grove-mmo.com/register');
+        if (req.body.password !== req.body.confPassword) return res.redirect('https://grove-mmo.com/register-err-pwd_nt_match');
         User.findOne({
             username: req.body.username
         }, (err, obj) => {
             if (err) console.error(err);
             else if (obj) {
-                res.redirect('https://grove-mmo.com/register');
+                res.redirect('https://grove-mmo.com/register-err-pwd_nt_match');
             }
             else {
                 let u = new User({
